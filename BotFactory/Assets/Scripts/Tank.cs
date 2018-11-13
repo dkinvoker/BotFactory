@@ -12,6 +12,7 @@ public class Tank : MonoBehaviour
     public Memory Memory { get; set; }
     public Weapon Weapon { get; set; }
     public Wheels Wheels { get; set; }
+    public double HP { get; set; }
 
     // Use this for initialization
     void Start()
