@@ -9,9 +9,9 @@ namespace Assets.Scripts.Parts.Wheels
     {
         public BasicWheels()
         {
-            MaxSpeed = 1;
+            MaxSpeed = 15;
             TurningSpeed = 0.2f;
-            Acceleration = 0.2f;
+            Acceleration = 10;
         }
     }
 }

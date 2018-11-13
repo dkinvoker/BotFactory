@@ -6,17 +6,20 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    class AccelerateForward : SimpleCommand
+    class TurnLeft : SimpleCommand
     {
+        public TurnLeft()
+        {
+        }
+
         public override bool Execute(Tank tank)
         {
             var body = tank.GetComponent<Rigidbody>();
-            var maxSpeed = tank.Wheels.MaxSpeed;            
+            var speed = tank.Wheels.TurningSpeed;
 
-            if (body.velocity.magnitude < maxSpeed)
+            if (body.angularVelocity.y < speed)
             {
-                var accelerationVector = Vector3.forward * tank.Wheels.Acceleration;
-                body.AddRelativeForce(accelerationVector);
+                body.AddTorque(Vector3.down * speed, ForceMode.Impulse);
             }
 
             return true;

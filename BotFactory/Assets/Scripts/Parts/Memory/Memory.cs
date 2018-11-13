@@ -1,20 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Variables;
+using System.Collections.Generic;
 namespace Assets.Scripts.Parts.Memory
 {
     public abstract class Memory
     {
-        public Variable[] Variables { get; private set; }
+        private Variable[] _variables;
 
         protected Memory(int capacity)
         {
-            Variables = new Variable[capacity];
+            _variables = new Variable[capacity];
         }
 
         public int Count
         {
             get
             {
-                return Variables.Length;
+                return _variables.Length;
             }
         }
 
@@ -22,11 +23,24 @@ namespace Assets.Scripts.Parts.Memory
         {
             get
             {
-                return Variables[index];
+                return _variables[index];
             }
-            set
+            private set
             {
-                Variables[index] = value;
+                _variables[index] = value;
+            }
+        }
+
+        public bool StoreValue(Variable variable, int index)
+        {
+            if (this[index] == null)
+            {
+                this[index] = variable;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

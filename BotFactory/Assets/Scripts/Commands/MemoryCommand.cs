@@ -6,12 +6,13 @@ using System.Text;
 
 namespace Assets.Scripts.Commands
 {
-    abstract class ParameterCommand : Command
+    abstract class MemoryCommand : Command
     {
+        protected int _memoryIndex;
 
-        public override bool Execute(Tank tank)
+        protected MemoryCommand(int memoryIndex)
         {
-            throw new NotImplementedException();
+            _memoryIndex = memoryIndex;
         }
     }
 }

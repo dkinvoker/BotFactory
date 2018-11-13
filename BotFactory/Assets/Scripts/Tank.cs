@@ -13,6 +13,8 @@ public class Tank : MonoBehaviour
     public Weapon Weapon { get; set; }
     public Wheels Wheels { get; set; }
     public double HP { get; set; }
+    public string Player;
+    public string Side;
 
     // Use this for initialization
     void Start()
@@ -23,6 +25,7 @@ public class Tank : MonoBehaviour
         Wheels = new BasicWheels();
 
         ProgramController.Commands.Add(new AccelerateForward());
+        ProgramController.Commands.Add(new TurnRight());
     }
 
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
