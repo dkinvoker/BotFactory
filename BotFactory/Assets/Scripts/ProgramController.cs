@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Commands;
+﻿using Assets.Scripts;
+using Assets.Scripts.Commands;
 using System.Collections.Generic;
 
 public class ProgramController
@@ -12,7 +13,7 @@ public class ProgramController
         Commands = new List<Command>();
     }
 
-    public bool RunCurrentCommand(Tank tank)
+    public CommandError RunCurrentCommand(Tank tank)
     {
         var returner = Commands[ProgramCounter].Execute(tank);
         if (ProgramCounter == Commands.Count - 1)

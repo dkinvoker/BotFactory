@@ -21,7 +21,7 @@ namespace Assets.Scripts.Commands
             }
         }
 
-        public override bool Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             var tankGameObjects = GameObject.FindGameObjectsWithTag("Tank");
             var tanks = tankGameObjects.Select(u => u.GetComponent<Tank>());
@@ -29,7 +29,15 @@ namespace Assets.Scripts.Commands
 
             if (enemyTanks == null || enemyTanks.Length == 0)
             {
-                return tank.Memory.StoreValue(null, _memoryIndex);
+                var success = tank.Memory.StoreValue(null, _memoryIndex);
+                if (success)
+                {
+                    return null;
+                }
+                else
+                {
+                    return new CommandError("Memory at " + _memoryIndex + " is full! Clear memory first");
+                }
             }
             else
             {
@@ -46,7 +54,15 @@ namespace Assets.Scripts.Commands
                 }
 
                 var variable = new Position(nearestEnemy.transform.position);
-                return tank.Memory.StoreValue(variable, _memoryIndex);
+                var success = tank.Memory.StoreValue(variable, _memoryIndex);
+                if (success)
+                {
+                    return null;
+                }
+                else
+                {
+                    return new CommandError("Memory at " + _memoryIndex + " is full! Clear memory first");
+                }
             }
 
         }

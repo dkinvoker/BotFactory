@@ -20,16 +20,16 @@ namespace Assets.Scripts.Commands
             }
         }
 
-        public override bool Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             var memoryData = tank.Memory[_memoryIndex];
             if (memoryData == null)
             {
-                return false;
+                return new CommandError("Memory at" + _memoryIndex + " is empty");
             }
             else if ( !(memoryData is Position) )
             {
-                return false;
+                return new CommandError("Memory at" + _memoryIndex + " is not a Position type");
             }
             else
             {

@@ -16,7 +16,7 @@ namespace Assets.Scripts.Commands
             }
         }
 
-        public override bool Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             var body = tank.GetComponent<Rigidbody>();
             var maxSpeed = tank.Wheels.MaxSpeed;            
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Commands
                 body.AddRelativeForce(accelerationVector);
             }
 
-            return true;
+            return null;
         }
     }
 }

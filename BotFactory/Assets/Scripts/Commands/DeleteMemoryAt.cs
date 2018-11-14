@@ -19,16 +19,16 @@ namespace Assets.Scripts.Commands
             }
         }
 
-        public override bool Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             if (tank.Memory[_memoryIndex] == null)
             {
-                return false;
+                return new CommandError("Memory at " + _memoryIndex + " is empty. Cannot delete empty memory!");
             }
             else
             {
                 tank.Memory.StoreValue(null, _memoryIndex);
-                return true;
+                return null;
             }
         }
     }

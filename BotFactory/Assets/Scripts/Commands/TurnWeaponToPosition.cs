@@ -19,7 +19,7 @@ namespace Assets.Scripts.Commands
             }
         }
 
-        public override bool Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             throw new NotImplementedException();
         }

@@ -20,7 +20,7 @@ namespace Assets.Scripts.Commands
             }
         }
 
-        public override bool Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             var body = tank.GetComponent<Rigidbody>();
             var speed = tank.Wheels.TurningSpeed;
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Commands
                 body.AddTorque(Vector3.down * speed, ForceMode.Impulse);
             }
 
-            return true;
+            return null;
         }
     }
 }
