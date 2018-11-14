@@ -11,6 +11,14 @@ namespace Assets.Scripts.Commands
         {
         }
 
+        public override CommandType Type
+        {
+            get
+            {
+                return CommandType.WeaponRotation;
+            }
+        }
+
         public override bool Execute(Tank tank)
         {
             throw new NotImplementedException();

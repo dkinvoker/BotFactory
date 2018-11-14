@@ -2,11 +2,22 @@
 {
     public abstract class Command
     {
+        public abstract CommandType Type { get; }
         /// <summary>
         /// Executes the command
         /// </summary>
         /// <param name="tank"> Tank that will execute the command </param>
         /// <returns> True if success, false otherwise </returns>
         public abstract bool Execute(Tank tank);
+    }
+
+    public enum CommandType
+    {
+        Move,
+        Rotation,
+        PureMemory,
+        Shoot,
+        Detect,
+        WeaponRotation
     }
 }

@@ -12,6 +12,14 @@ namespace Assets.Scripts.Commands
         {
         }
 
+        public override CommandType Type
+        {
+            get
+            {
+                return CommandType.Rotation;
+            }
+        }
+
         public override bool Execute(Tank tank)
         {
             var body = tank.GetComponent<Rigidbody>();

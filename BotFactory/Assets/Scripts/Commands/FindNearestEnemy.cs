@@ -13,6 +13,14 @@ namespace Assets.Scripts.Commands
         {
         }
 
+        public override CommandType Type
+        {
+            get
+            {
+                return CommandType.Detect;
+            }
+        }
+
         public override bool Execute(Tank tank)
         {
             var tankGameObjects = GameObject.FindGameObjectsWithTag("Tank");

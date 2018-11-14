@@ -11,6 +11,14 @@ namespace Assets.Scripts.Commands
         {
         }
 
+        public override CommandType Type
+        {
+            get
+            {
+                return CommandType.PureMemory;
+            }
+        }
+
         public override bool Execute(Tank tank)
         {
             if (tank.Memory[_memoryIndex] == null)

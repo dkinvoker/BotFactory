@@ -8,6 +8,14 @@ namespace Assets.Scripts.Commands
 {
     class AccelerateForward : SimpleCommand
     {
+        public override CommandType Type
+        {
+            get
+            {
+                return CommandType.Move;
+            }
+        }
+
         public override bool Execute(Tank tank)
         {
             var body = tank.GetComponent<Rigidbody>();
