@@ -17,7 +17,7 @@ namespace Assets.Scripts.Commands
         {
             var tankGameObjects = GameObject.FindGameObjectsWithTag("Tank");
             var tanks = tankGameObjects.Select(u => u.GetComponent<Tank>());
-            var enemyTanks = tanks.Where( u => u.Side != tank.Side).ToArray();
+            var enemyTanks = tanks.Where(u => u.Side != tank.Side).ToArray();
 
             if (enemyTanks == null || enemyTanks.Length == 0)
             {

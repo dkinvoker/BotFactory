@@ -1,14 +1,18 @@
 ﻿using Assets.Scripts.Variables;
 using System.Collections.Generic;
+using UnityEngine;
+
 namespace Assets.Scripts.Parts.Memory
 {
-    public abstract class Memory
+    [CreateAssetMenu(fileName = "Memory", menuName = "Tank Parts/Memory")]
+    public class Memory :ScriptableObject
     {
         private Variable[] _variables;
+        public int Size;
 
-        protected Memory(int capacity)
+        public void Initialize()
         {
-            _variables = new Variable[capacity];
+            _variables = new Variable[Size];
         }
 
         public int Count

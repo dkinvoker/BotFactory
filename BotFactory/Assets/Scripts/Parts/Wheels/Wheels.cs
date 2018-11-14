@@ -1,10 +1,13 @@
-﻿namespace Assets.Scripts.Parts.Wheels
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Parts.Wheels
 {
-    public abstract class Wheels
+    [CreateAssetMenu(fileName = "Wheels", menuName = "Tank Parts/Wheels")]
+    public class Wheels : ScriptableObject
     {
-        public float Acceleration { get; protected set; }
-        public float MaxSpeed { get; protected set; }
-        public float TurningSpeed { get; protected set; }
+        public float Acceleration;
+        public float MaxSpeed;
+        public float TurningSpeed;
     }
 }
 

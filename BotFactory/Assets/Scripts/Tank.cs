@@ -9,9 +9,9 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     public ProgramController ProgramController { get; set; }
-    public Memory Memory { get; set; }
-    public Weapon Weapon { get; set; }
-    public Wheels Wheels { get; set; }
+    public Memory Memory;
+    public Weapon Weapon;
+    public Wheels Wheels;
     public double HP { get; set; }
     public string Player;
     public string Side;
@@ -19,10 +19,9 @@ public class Tank : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Memory.Initialize();
+
         ProgramController = new ProgramController();
-        Memory = new BasicMemory();
-        Weapon = new BasicWeapon();
-        Wheels = new BasicWheels();
 
         ProgramController.Commands.Add(new AccelerateForward());
         ProgramController.Commands.Add(new TurnRight());

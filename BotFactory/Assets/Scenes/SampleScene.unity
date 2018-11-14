@@ -336,6 +336,34 @@ Prefab:
       propertyPath: m_Drag
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 114944799813049464, guid: bb2b72cb218f27945b20372c1705b205,
+        type: 2}
+      propertyPath: Player
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114944799813049464, guid: bb2b72cb218f27945b20372c1705b205,
+        type: 2}
+      propertyPath: Side
+      value: Side1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114944799813049464, guid: bb2b72cb218f27945b20372c1705b205,
+        type: 2}
+      propertyPath: Wheels
+      value: 
+      objectReference: {fileID: 11400000, guid: 43d40d5613516ef4d8198f3067640e98,
+        type: 2}
+    - target: {fileID: 114944799813049464, guid: bb2b72cb218f27945b20372c1705b205,
+        type: 2}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 403109c4adc0b634788de483c8758129,
+        type: 2}
+    - target: {fileID: 114944799813049464, guid: bb2b72cb218f27945b20372c1705b205,
+        type: 2}
+      propertyPath: Memory
+      value: 
+      objectReference: {fileID: 11400000, guid: cd7b33a8e72d16b428b19dd0d15dc435,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb2b72cb218f27945b20372c1705b205, type: 2}
   m_IsPrefabAsset: 0

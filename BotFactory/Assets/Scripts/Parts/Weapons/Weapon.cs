@@ -1,10 +1,13 @@
-﻿namespace Assets.Scripts.Parts.Weapons
+﻿using UnityEngine;
+
+namespace Assets.Scripts.Parts.Weapons
 {
-    public abstract class Weapon
+    [CreateAssetMenu(fileName = "Weapon", menuName = "Tank Parts/Weapon")]
+    public class Weapon : ScriptableObject
     {
-        public double Damage { get; protected set; }
-        public double ReloadTime { get; protected set; }
-        public double BulletSpeed { get; protected set; }
+        public double Damage;
+        public double ReloadTime;
+        public double BulletSpeed;
     }
 }
 
