@@ -50,11 +50,11 @@ public class Tank : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //ProgramController.Commands.Add(new AccelerateForward());
-        //ProgramController.Commands.Add(new TurnRight());
+        ProgramController.Commands.Add(new AccelerateForward());
+        ProgramController.Commands.Add(new TurnRight());
 
-        ProgramController.Commands.Add(new FindNearestEnemy(0));
-        ProgramController.Commands.Add(new TurnToPosition(0));
+        //ProgramController.Commands.Add(new FindNearestEnemy(0));
+        //ProgramController.Commands.Add(new TurnToPosition(0));
     }
 
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona

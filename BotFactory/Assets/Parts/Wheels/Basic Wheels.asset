@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22c2f0844befed4aae1c57731a1d92a, type: 3}
   m_Name: Basic Wheels
   m_EditorClassIdentifier: 
-  Acceleration: 15
+  Acceleration: 10
   MaxSpeed: 15
-  TurningSpeed: 3
+  TurningSpeed: 0.3
