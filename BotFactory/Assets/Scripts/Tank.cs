@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Commands;
+﻿using Assets.Scripts;
+using Assets.Scripts.Commands;
 using Assets.Scripts.Parts.Memory;
 using Assets.Scripts.Parts.Weapons;
 using Assets.Scripts.Parts.Wheels;
@@ -8,6 +9,7 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
+    #region Props and publics
     public ProgramController ProgramController { get; set; }
     public Memory Memory;
     public Weapon Weapon;
@@ -15,13 +17,25 @@ public class Tank : MonoBehaviour
     public double HP { get; set; }
     public string Player;
     public string Side;
+    public bool IsLocked { get; set; }
+    #endregion
+
+    #region Private Variables
+    #endregion
+
+    #region Init
+    private void InitProps()
+    {
+        Memory.Initialize();
+        IsLocked = false;
+
+        ProgramController = new ProgramController();
+    }
 
     // Use this for initialization
     void Start()
     {
-        Memory.Initialize();
-
-        ProgramController = new ProgramController();
+        InitProps();
 
         //ProgramController.Commands.Add(new AccelerateForward());
         //ProgramController.Commands.Add(new TurnRight());
@@ -29,11 +43,43 @@ public class Tank : MonoBehaviour
         ProgramController.Commands.Add(new FindNearestEnemy(0));
         ProgramController.Commands.Add(new TurnToPosition(0));
     }
+    #endregion
 
+    #region Reboot
+    private void Reboot()
+    {
+        IsLocked = true;
+        ProgramController.ProgramCounter = 0;
+        StartCoroutine(RebootCoorutine());
+    }
+
+    private IEnumerator RebootCoorutine()
+    {
+        yield return new WaitForSeconds(4);
+        IsLocked = false;
+    }
+    #endregion
+
+    #region Errorraport
+    private void RaportError(CommandError error)
+    {
+        string finalMessage = "Error occurred at " + ProgramController.ProgramCounter + " : " + error.Message + ". Rebooting tank";
+        Debug.LogError(finalMessage);
+    }
+    #endregion
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
     private void FixedUpdate()
     {
-        ProgramController.ExecuteCommandPacket(this);
+        if (!IsLocked)
+        {
+            var packetError = ProgramController.ExecuteCommandPacket(this);
+            if (packetError != null)
+            {
+                RaportError(packetError);
+                Reboot();
+            }
+        }
+
     }
 
     // Update is called once per frame

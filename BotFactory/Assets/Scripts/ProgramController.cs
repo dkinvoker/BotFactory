@@ -17,14 +17,18 @@ public class ProgramController
     private CommandError RunCurrentCommand(Tank tank)
     {
         var returner = Commands[ProgramCounter].Execute(tank);
-        if (ProgramCounter == Commands.Count - 1)
+        if (returner == null)
         {
-            ProgramCounter = 0;
+            if (ProgramCounter == Commands.Count - 1)
+            {
+                ProgramCounter = 0;
+            }
+            else
+            {
+                ProgramCounter++;
+            }
         }
-        else
-        {
-            ProgramCounter++;
-        }
+
         return returner;
     }
 
