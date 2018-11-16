@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
+    [CreateAssetMenu(fileName = "AccelerateForward", menuName = "Commands/Accelerate Forward")]
     class AccelerateForward : SimpleCommand
     {
         public override CommandType Type

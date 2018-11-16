@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
+    [CreateAssetMenu(fileName = "TurnToPosition", menuName = "Commands/Turn To Position")]
     class TurnToPosition : MemoryCommand
     {
         public TurnToPosition(int memoryIndex) : base(memoryIndex)

@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
+    [CreateAssetMenu(fileName = "FindNearestEnemy", menuName = "Commands/Find Nearest Enemy")]
     class FindNearestEnemy : MemoryCommand
     {
         public FindNearestEnemy(int memoryIndex) : base(memoryIndex)

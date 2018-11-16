@@ -57,7 +57,6 @@ public class Tank : MonoBehaviour
         ProgramController.Commands.Add(new TurnToPosition(0));
     }
 
-
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
     private void FixedUpdate()
     {

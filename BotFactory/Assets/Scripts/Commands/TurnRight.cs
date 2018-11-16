@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
+    [CreateAssetMenu(fileName = "TurnRight", menuName = "Commands/Turn Right")]
     class TurnRight : SimpleCommand
     {
         public TurnRight()
