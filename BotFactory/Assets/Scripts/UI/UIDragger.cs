@@ -11,7 +11,7 @@ namespace Assets.Scripts.UI
     {
         public void OnBeginDrag(PointerEventData eventData)
         {
-            throw new NotImplementedException();
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -21,7 +21,7 @@ namespace Assets.Scripts.UI
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            throw new NotImplementedException();
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }
 }

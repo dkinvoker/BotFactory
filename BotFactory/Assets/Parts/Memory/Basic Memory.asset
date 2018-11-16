@@ -11,4 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705a7d59029a10d4a8004340f757ba02, type: 3}
   m_Name: Basic Memory
   m_EditorClassIdentifier: 
-  Size: 3
+  Variables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

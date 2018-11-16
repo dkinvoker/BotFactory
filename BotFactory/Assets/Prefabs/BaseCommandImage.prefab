@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114407029150620886}
   - component: {fileID: 114843741496504332}
   - component: {fileID: 114519473146959244}
+  - component: {fileID: 225244914790807940}
   m_Layer: 5
   m_Name: BaseCommandImage
   m_TagString: DragableUI
@@ -264,3 +265,14 @@ RectTransform:
   m_AnchoredPosition: {x: -106, y: -40}
   m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225244914790807940
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301165153794518}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

@@ -5,21 +5,15 @@ using UnityEngine;
 namespace Assets.Scripts.Parts.Memory
 {
     [CreateAssetMenu(fileName = "Memory", menuName = "Tank Parts/Memory")]
-    public class Memory :ScriptableObject
+    public class Memory : ScriptableObject
     {
-        private Variable[] _variables;
-        public int Size;
-
-        public void Initialize()
-        {
-            _variables = new Variable[Size];
-        }
+        public Variable[] Variables;
 
         public int Count
         {
             get
             {
-                return _variables.Length;
+                return Variables.Length;
             }
         }
 
@@ -27,11 +21,11 @@ namespace Assets.Scripts.Parts.Memory
         {
             get
             {
-                return _variables[index];
+                return Variables[index];
             }
             private set
             {
-                _variables[index] = value;
+                Variables[index] = value;
             }
         }
 

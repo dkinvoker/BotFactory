@@ -23,25 +23,6 @@ public class Tank : MonoBehaviour
     #region Private Variables
     #endregion
 
-    #region Init
-    private void InitProps()
-    {
-        Memory.Initialize();
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        InitProps();
-
-        //ProgramController.Commands.Add(new AccelerateForward());
-        //ProgramController.Commands.Add(new TurnRight());
-
-        ProgramController.Commands.Add(new FindNearestEnemy(0));
-        ProgramController.Commands.Add(new TurnToPosition(0));
-    }
-    #endregion
-
     #region Tank Reboot
     private void Reboot()
     {
@@ -64,6 +45,19 @@ public class Tank : MonoBehaviour
         Debug.LogError(finalMessage);
     }
     #endregion
+
+    #region Monos
+    // Use this for initialization
+    void Start()
+    {
+        //ProgramController.Commands.Add(new AccelerateForward());
+        //ProgramController.Commands.Add(new TurnRight());
+
+        ProgramController.Commands.Add(new FindNearestEnemy(0));
+        ProgramController.Commands.Add(new TurnToPosition(0));
+    }
+
+
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
     private void FixedUpdate()
     {
@@ -84,6 +78,6 @@ public class Tank : MonoBehaviour
     {
 
     }
-
+    #endregion
 
 }
