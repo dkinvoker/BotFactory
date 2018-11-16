@@ -60,7 +60,7 @@ public class Tank : MonoBehaviour
     #region Errorraport
     private void RaportError(CommandError error)
     {
-        string finalMessage = "Error occurred at " + ProgramController.ProgramCounter + " : " + error.Message + ". Rebooting tank";
+        string finalMessage = $"Error occurred at {ProgramController.ProgramCounter} : {error.Message}. Rebooting tank";
         Debug.LogError(finalMessage);
     }
     #endregion

@@ -23,7 +23,7 @@ namespace Assets.Scripts.Commands
         {
             if (tank.Memory[_memoryIndex] == null)
             {
-                return new CommandError("Memory at " + _memoryIndex + " is empty. Cannot delete empty memory!");
+                return new CommandError($"Memory at {_memoryIndex} is empty. Cannot delete empty memory!");
             }
             else
             {

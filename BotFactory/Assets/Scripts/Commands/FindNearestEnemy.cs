@@ -36,7 +36,7 @@ namespace Assets.Scripts.Commands
                 }
                 else
                 {
-                    return new CommandError("Memory at " + _memoryIndex + " is full! Clear memory first");
+                    return new CommandError($"Memory at {_memoryIndex} is full! Clear memory first");
                 }
             }
             else
@@ -61,7 +61,7 @@ namespace Assets.Scripts.Commands
                 }
                 else
                 {
-                    return new CommandError("Memory at " + _memoryIndex + " is full! Clear memory first");
+                    return new CommandError($"Memory at {_memoryIndex} is full! Clear memory first");
                 }
             }
 
