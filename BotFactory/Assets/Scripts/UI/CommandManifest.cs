@@ -11,7 +11,7 @@ using UnityEngine.UI;
 namespace Assets.Scripts.UI
 {
     [CreateAssetMenu(fileName = "CommandUIManifest", menuName = "Custiom UI/Command UI Manifest")]
-    class CommandUIManifest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    class CommandManifest : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [TextArea]
         public string Description = "Command Description";

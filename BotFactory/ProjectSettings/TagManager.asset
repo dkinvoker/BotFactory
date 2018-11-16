@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tank
   - DragableUI
+  - Info Box
   layers:
   - Default
   - TransparentFX
