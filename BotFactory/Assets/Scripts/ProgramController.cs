@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts;
 using Assets.Scripts.Commands;
+using System;
 using System.Collections.Generic;
 
 public class ProgramController
@@ -13,7 +14,7 @@ public class ProgramController
         Commands = new List<Command>();
     }
 
-    public CommandError RunCurrentCommand(Tank tank)
+    private CommandError RunCurrentCommand(Tank tank)
     {
         var returner = Commands[ProgramCounter].Execute(tank);
         if (ProgramCounter == Commands.Count - 1)
@@ -25,5 +26,27 @@ public class ProgramController
             ProgramCounter++;
         }
         return returner;
+    }
+
+    private CommandType GetCurrentCommandType()
+    {
+        return Commands[ProgramCounter].Type;
+    }
+
+    public CommandError ExecuteCommandPacket(Tank tank)
+    {
+        CommandError commandError = null;
+        List<CommandType> usedTypes = new List<CommandType>(); 
+        while (!usedTypes.Contains( GetCurrentCommandType() ))
+        {
+            usedTypes.Add(GetCurrentCommandType());
+            commandError = RunCurrentCommand(tank);
+            if (commandError != null)
+            {
+                return commandError;
+            }
+        }
+
+        return commandError;
     }
 }

@@ -33,7 +33,7 @@ public class Tank : MonoBehaviour
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
     private void FixedUpdate()
     {
-        ProgramController.RunCurrentCommand(this);
+        ProgramController.ExecuteCommandPacket(this);
     }
 
     // Update is called once per frame
