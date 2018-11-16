@@ -10,14 +10,14 @@ using UnityEngine;
 public class Tank : MonoBehaviour
 {
     #region Props and publics
-    public ProgramController ProgramController { get; set; }
+    public ProgramController ProgramController { get; set; } = new ProgramController();
     public Memory Memory;
     public Weapon Weapon;
     public Wheels Wheels;
     public double HP { get; set; }
     public string Player;
     public string Side;
-    public bool IsLocked { get; set; }
+    public bool IsLocked { get; set; } = false;
     #endregion
 
     #region Private Variables
@@ -27,9 +27,6 @@ public class Tank : MonoBehaviour
     private void InitProps()
     {
         Memory.Initialize();
-        IsLocked = false;
-
-        ProgramController = new ProgramController();
     }
 
     // Use this for initialization
@@ -45,7 +42,7 @@ public class Tank : MonoBehaviour
     }
     #endregion
 
-    #region Reboot
+    #region Tank Reboot
     private void Reboot()
     {
         IsLocked = true;
