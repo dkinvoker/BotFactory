@@ -306,10 +306,10 @@ RectTransform:
   m_Father: {fileID: 5439609}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 0.6}
-  m_SizeDelta: {x: 614.15, y: 33.3}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052301175
 MonoBehaviour:
@@ -504,8 +504,8 @@ GameObject:
   - component: {fileID: 1683200020}
   - component: {fileID: 1683200019}
   m_Layer: 0
-  m_Name: Programing Manger
-  m_TagString: Untagged
+  m_Name: Programming Manger
+  m_TagString: Programming Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,8 +549,8 @@ GameObject:
   - component: {fileID: 1940903190}
   - component: {fileID: 1940903187}
   m_Layer: 5
-  m_Name: Program Panel
-  m_TagString: Untagged
+  m_Name: Programming Panel
+  m_TagString: Programming Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
