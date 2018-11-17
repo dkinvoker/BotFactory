@@ -6,35 +6,64 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.ComponentModel;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
-    class ProgramDropZone : MonoBehaviour, IDropHandler
+    class ProgramDropZone : MonoBehaviour, 
+        IDropHandler,
+        IPointerEnterHandler, IPointerExitHandler
     {
         public GameObject SimpleCommandPrefab;
         public GameObject MemoryCommandPrefab;
 
+        private GameObject _dummy = null;
+
         public void OnDrop(PointerEventData eventData)
         {
-            var commandManifest = eventData.pointerDrag.GetComponent<CommandBlock>();
-            if (commandManifest.CommandBlueprint is SimpleCommand)
+            var commandBlock = eventData.pointerDrag.GetComponent<CommandBlock>();
+            GameObject prefabCopy = null;
+
+            if (commandBlock.CommandBlueprint is SimpleCommand)
             {
-                var copy = GameObject.Instantiate(SimpleCommandPrefab, this.transform);
-                CopyComandInfo(copy, commandManifest);
+                prefabCopy = GameObject.Instantiate(SimpleCommandPrefab, this.transform);
             }
-            else if (commandManifest.CommandBlueprint is MemoryCommand)
+            else if (commandBlock.CommandBlueprint is MemoryCommand)
             {
-                var copy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
-                CopyComandInfo(copy, commandManifest);
+                prefabCopy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
+            }
+
+            CopyComandInfo(prefabCopy, commandBlock);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (eventData.pointerDrag != null)
+            {
+                _dummy = new GameObject();
+
+                var leyoutElement = _dummy.AddComponent<LayoutElement>();
+                leyoutElement.preferredHeight = SimpleCommandPrefab.GetComponent<LayoutElement>().preferredHeight;
+                leyoutElement.preferredWidth = SimpleCommandPrefab.GetComponent<LayoutElement>().preferredWidth;
+                leyoutElement.flexibleHeight = 0;
+                leyoutElement.flexibleWidth = 0;
+
+                _dummy.transform.SetParent(this.transform);
             }
         }
 
-        private void CopyComandInfo(GameObject copy, CommandBlock commandManifest)
+        public void OnPointerExit(PointerEventData eventData)
         {
-            //copy.AddComponent<CommandStorageComponent>();
-            //copy.GetComponent<CommandStorageComponent>().Command = commandManifest.CommandBlueprint;
-            //copy.transform.GetComponentInChildren<Text>().text = commandManifest.gameObject.name;
+            if (_dummy != null)
+            {
+                Destroy(_dummy);
+            }
+        }
+
+        private void CopyComandInfo(GameObject prefabCopy, CommandBlock commandBlock)
+        {
+            prefabCopy.GetComponent<CommandInstanceBlock>().Command = commandBlock.CommandBlueprint.Copy();
         }
     }
 }

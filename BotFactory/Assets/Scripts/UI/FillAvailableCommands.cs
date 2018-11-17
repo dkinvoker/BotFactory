@@ -14,12 +14,12 @@ namespace Assets.Scripts.UI
         private readonly Command[] _allCommands = 
         {
             new AccelerateForward(),
-            new DeleteMemoryAt(0),
-            new FindNearestEnemy(0),
+            new DeleteMemoryAt(),
+            new FindNearestEnemy(),
             new TurnLeft(),
             new TurnRight(),
-            new TurnToPosition(0),
-            new TurnWeaponToPosition(0)
+            new TurnToPosition(),
+            new TurnWeaponToPosition()
         };
 
         private void Start()

@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tank
-  - DragableUI
   - Info Box
+  - Available Commands Area
   layers:
   - Default
   - TransparentFX

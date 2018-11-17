@@ -11,9 +11,6 @@ namespace Assets.Scripts.Commands
     [Description("Turns the tank left or right dependig on the position stored in memory cell")]
     class TurnToPosition : MemoryCommand
     {
-        public TurnToPosition(int memoryIndex) : base(memoryIndex)
-        {
-        }
 
         public override CommandType Type
         {

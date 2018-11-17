@@ -39,11 +39,10 @@ GameObject:
   - component: {fileID: 222570875899388332}
   - component: {fileID: 114120223516471860}
   - component: {fileID: 114842403276056618}
-  - component: {fileID: 114847185041732154}
   - component: {fileID: 225045172983908970}
   - component: {fileID: 114591816812484212}
   m_Layer: 5
-  m_Name: Command Manifest
+  m_Name: Command Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +98,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 18
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 20
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -137,19 +136,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 549d99c68ede69f47ac169a20004d7d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Description: Command Description
-  CommandBlueprint: {fileID: 0}
---- !u!114 &114847185041732154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1410142027639178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76b49f2b53b10974ebda4936cbb3042e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!222 &222570875899388332

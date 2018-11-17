@@ -18,6 +18,11 @@ namespace Assets.Scripts.Commands
                 return (atributes[0] as DescriptionAttribute).Description;
             }
         }
+
+        public Command Copy()
+        {
+            return this.MemberwiseClone() as Command;
+        }
     }
 
     public enum CommandType

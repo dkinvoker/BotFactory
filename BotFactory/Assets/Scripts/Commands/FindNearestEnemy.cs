@@ -11,10 +11,6 @@ namespace Assets.Scripts.Commands
     [Description("Stores location of nearest enemy in specified memory cell. If there is no enemies, stores null")]
     class FindNearestEnemy : MemoryCommand
     {
-        public FindNearestEnemy(int memoryIndex) : base(memoryIndex)
-        {
-        }
-
         public override CommandType Type
         {
             get

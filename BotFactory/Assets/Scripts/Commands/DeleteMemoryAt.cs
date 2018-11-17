@@ -10,10 +10,6 @@ namespace Assets.Scripts.Commands
     [Description("Clears memory at specified location")]
     class DeleteMemoryAt : MemoryCommand
     {
-        public DeleteMemoryAt(int memoryIndex) : base(memoryIndex)
-        {
-        }
-
         public override CommandType Type
         {
             get

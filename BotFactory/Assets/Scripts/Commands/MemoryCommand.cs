@@ -8,11 +8,6 @@ namespace Assets.Scripts.Commands
 {
     abstract class MemoryCommand : Command
     {
-        protected int _memoryIndex;
-
-        protected MemoryCommand(int memoryIndex)
-        {
-            _memoryIndex = memoryIndex;
-        }
+        protected int _memoryIndex = 0;
     }
 }
