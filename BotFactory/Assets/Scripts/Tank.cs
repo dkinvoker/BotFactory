@@ -18,6 +18,7 @@ public class Tank : MonoBehaviour
     public string Player;
     public string Side;
     public bool IsLocked { get; set; } = false;
+    public int ProgramInex = 0;
     #endregion
 
     #region Private Variables
@@ -50,11 +51,7 @@ public class Tank : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        ProgramController.Commands.Add(new AccelerateForward());
-        ProgramController.Commands.Add(new TurnRight());
-
-        //ProgramController.Commands.Add(new FindNearestEnemy());
-        //ProgramController.Commands.Add(new TurnToPosition());
+        
     }
 
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona

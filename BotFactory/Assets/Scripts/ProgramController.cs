@@ -5,21 +5,37 @@ using System.Collections.Generic;
 
 public class ProgramController
 {
-    public List<Command> Commands { get; private set; }
+    public static Dictionary<string, List<List<Command>>> Programs { get; private set; }
+
     public int ProgramCounter { get; set; }
+
+    private string _player { get; set; } = string.Empty;
+    private int _programIndex = -1;
+
+    private List<Command> CurrnetProgram
+    {
+        get
+        {
+            return Programs[_player][_programIndex];
+        }
+    }
+
+    static ProgramController()
+    {
+        Programs = new Dictionary<string, List<List<Command>>>();
+    }
 
     public ProgramController()
     {
         ProgramCounter = 0;
-        Commands = new List<Command>();
     }
 
     private CommandError RunCurrentCommand(Tank tank)
     {
-        var returner = Commands[ProgramCounter].Execute(tank);
+        var returner = CurrnetProgram[ProgramCounter].Execute(tank);
         if (returner == null)
         {
-            if (ProgramCounter == Commands.Count - 1)
+            if (ProgramCounter == CurrnetProgram.Count - 1)
             {
                 ProgramCounter = 0;
             }
@@ -34,7 +50,7 @@ public class ProgramController
 
     private CommandType GetCurrentCommandType()
     {
-        return Commands[ProgramCounter].Type;
+        return CurrnetProgram[ProgramCounter].Type;
     }
 
     public CommandError ExecuteCommandPacket(Tank tank)
@@ -52,5 +68,20 @@ public class ProgramController
         }
 
         return commandError;
+    }
+
+    public static void RegisterProgram(string player, List<Command> program)
+    {
+        if (!Programs.ContainsKey(player))
+        {
+            Programs.Add(player, new List<List<Command>>());
+        }
+        Programs[player].Add(program);      
+    }
+
+    public void SetExecutionToProgram(Tank tank)
+    {
+        _player = tank.Player;
+        _programIndex = tank.ProgramInex;
     }
 }
