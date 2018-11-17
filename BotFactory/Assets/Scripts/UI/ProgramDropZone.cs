@@ -18,6 +18,21 @@ namespace Assets.Scripts.UI
         public GameObject SimpleCommandPrefab;
         public GameObject MemoryCommandPrefab;
 
+        public int? DummySlot
+        {
+            get
+            {
+                return _dummy?.transform.GetSiblingIndex();
+            }
+            set
+            {
+                if (_dummy != null)
+                {
+                    _dummy.transform.SetSiblingIndex(value.Value);
+                }
+            }
+        }
+
         private GameObject _dummy = null;
 
         public void OnDrop(PointerEventData eventData)
@@ -34,7 +49,10 @@ namespace Assets.Scripts.UI
                 prefabCopy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
             }
 
+            prefabCopy.transform.SetSiblingIndex(DummySlot.Value);
             prefabCopy.GetComponent<CommandInstanceBlock>().Command = commandBlock.CommandBlueprint.Copy();
+
+            OnPointerExit(eventData);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -50,6 +68,7 @@ namespace Assets.Scripts.UI
                 leyoutElement.flexibleWidth = 0;
 
                 _dummy.transform.SetParent(this.transform);
+                _dummy.transform.SetSiblingIndex(DummySlot.Value);
             }
         }
 
@@ -58,7 +77,9 @@ namespace Assets.Scripts.UI
             if (_dummy != null)
             {
                 Destroy(_dummy);
+                _dummy = null;
             }
         }
+
     }
 }

@@ -16,7 +16,7 @@ namespace Assets.Scripts.UI
     {
         public Command CommandBlueprint { get; set; }
         private CommandBlock _copy = null;
-
+        private GameObject _programmingPanel = null;
 
         private void Start()
         {
@@ -54,6 +54,26 @@ namespace Assets.Scripts.UI
         public void OnDrag(PointerEventData eventData)
         {
             _copy.transform.position = eventData.position;
+            if (_programmingPanel == null)
+            {
+                _programmingPanel = GameObject.FindGameObjectWithTag("Programming Panel");
+            }
+
+            var droppingZone = _programmingPanel.GetComponent<ProgramDropZone>();
+
+            if (droppingZone.DummySlot != null)
+            {
+                for (int i = 0; i < _programmingPanel.transform.childCount; ++i)
+                {
+                    var obj = _programmingPanel.transform.GetChild(i);
+                    if (obj.transform.position.y < eventData.position.y)
+                    {
+                        droppingZone.DummySlot = i;
+                        break;
+                    }
+                }
+            }
+                   
         }
 
         public void OnEndDrag(PointerEventData eventData)
