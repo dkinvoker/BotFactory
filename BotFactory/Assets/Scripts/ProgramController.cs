@@ -79,7 +79,7 @@ public class ProgramController
         Programs[player].Add(program);      
     }
 
-    public void SetExecutionToProgram(Tank tank)
+    public void SetToTankProgram(Tank tank)
     {
         _player = tank.Player;
         _programIndex = tank.ProgramInex;

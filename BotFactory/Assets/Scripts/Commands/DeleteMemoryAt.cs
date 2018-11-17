@@ -26,7 +26,7 @@ namespace Assets.Scripts.Commands
             }
             else
             {
-                tank.Memory.StoreValue(null, MemoryIndex);
+                tank.Memory.Variables[MemoryIndex] = null;
                 return null;
             }
         }

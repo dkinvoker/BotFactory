@@ -51,7 +51,7 @@ public class Tank : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        ProgramController.SetToTankProgram(this);
     }
 
     // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona

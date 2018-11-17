@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Commands;
+using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.UI
+namespace Assets.Scripts
 {
     class ProgrammingManager : MonoBehaviour
     {
@@ -37,8 +38,16 @@ namespace Assets.Scripts.UI
 
         public void ChangeScene()
         {
+            SaveProgram("Player1");
             SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
         }
 
+        private void SaveProgram(string player)
+        {
+            var programmingPanel = GameObject.FindGameObjectWithTag("Programming Panel");
+            var blocks = programmingPanel.transform.GetComponentsInChildren<CommandInstanceBlock>();
+            var program = blocks.Select( u => u.Command ).ToList();
+            ProgramController.RegisterProgram(player, program);
+        }
     }
 }
