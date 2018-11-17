@@ -1,13 +1,14 @@
 ﻿using Assets.Scripts.Variables;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [CreateAssetMenu(fileName = "FindNearestEnemy", menuName = "Commands/Find Nearest Enemy")]
+    [Description("Stores location of nearest enemy in specified memory cell. If there is no enemies, stores null")]
     class FindNearestEnemy : MemoryCommand
     {
         public FindNearestEnemy(int memoryIndex) : base(memoryIndex)

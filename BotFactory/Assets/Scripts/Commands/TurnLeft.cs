@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [CreateAssetMenu(fileName = "TurnLeft", menuName = "Commands/Turn Left")]
+    [Description("Turns the tank left")]
     class TurnLeft : SimpleCommand
     {
         public TurnLeft()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.UI
 {
-    class CommandInstanceUIManifest
+    class CommandInstanceBlock
     {
     }
 }

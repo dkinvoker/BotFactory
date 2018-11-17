@@ -1,0 +1,37 @@
+﻿using Assets.Scripts.Commands;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace Assets.Scripts.UI
+{
+    class FillAvailableCommands : MonoBehaviour
+    {
+        public GameObject CommandPrefab;
+        private readonly Command[] _allCommands = 
+        {
+            new AccelerateForward(),
+            new DeleteMemoryAt(0),
+            new FindNearestEnemy(0),
+            new TurnLeft(),
+            new TurnRight(),
+            new TurnToPosition(0),
+            new TurnWeaponToPosition(0)
+        };
+
+        private void Start()
+        {
+            var panel = GameObject.FindGameObjectWithTag("Available Commands Area");
+            foreach (var command in _allCommands)
+            {
+                var newCommandBlock = GameObject.Instantiate(CommandPrefab, panel.transform);
+                newCommandBlock.GetComponent<CommandBlock>().CommandBlueprint = command;
+            }   
+        }
+
+
+    }
+}

@@ -1,13 +1,14 @@
 ﻿using Assets.Scripts.Variables;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [CreateAssetMenu(fileName = "TurnToPosition", menuName = "Commands/Turn To Position")]
+    [Description("Turns the tank left or right dependig on the position stored in memory cell")]
     class TurnToPosition : MemoryCommand
     {
         public TurnToPosition(int memoryIndex) : base(memoryIndex)

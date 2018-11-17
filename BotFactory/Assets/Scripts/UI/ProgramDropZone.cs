@@ -17,7 +17,7 @@ namespace Assets.Scripts.UI
 
         public void OnDrop(PointerEventData eventData)
         {
-            var commandManifest = eventData.pointerDrag.GetComponent<CommandManifest>();
+            var commandManifest = eventData.pointerDrag.GetComponent<CommandBlock>();
             if (commandManifest.CommandBlueprint is SimpleCommand)
             {
                 var copy = GameObject.Instantiate(SimpleCommandPrefab, this.transform);
@@ -30,11 +30,11 @@ namespace Assets.Scripts.UI
             }
         }
 
-        private void CopyComandInfo(GameObject copy, CommandManifest commandManifest)
+        private void CopyComandInfo(GameObject copy, CommandBlock commandManifest)
         {
-            copy.AddComponent<CommandStorageComponent>();
-            copy.GetComponent<CommandStorageComponent>().Command = commandManifest.CommandBlueprint;
-            copy.transform.GetComponentInChildren<Text>().text = commandManifest.gameObject.name;
+            //copy.AddComponent<CommandStorageComponent>();
+            //copy.GetComponent<CommandStorageComponent>().Command = commandManifest.CommandBlueprint;
+            //copy.transform.GetComponentInChildren<Text>().text = commandManifest.gameObject.name;
         }
     }
 }

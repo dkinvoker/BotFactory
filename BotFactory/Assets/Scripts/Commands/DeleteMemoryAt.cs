@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [CreateAssetMenu(fileName = "DeleteMemoryAt", menuName = "Commands/Delete Memory At")]
+    [Description("Clears memory at specified location")]
     class DeleteMemoryAt : MemoryCommand
     {
         public DeleteMemoryAt(int memoryIndex) : base(memoryIndex)

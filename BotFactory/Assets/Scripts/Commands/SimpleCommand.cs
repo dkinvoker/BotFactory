@@ -7,6 +7,5 @@ namespace Assets.Scripts.Commands
 {
     abstract class SimpleCommand : Command
     {
-
     }
 }

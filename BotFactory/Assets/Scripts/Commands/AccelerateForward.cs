@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [CreateAssetMenu(fileName = "AccelerateForward", menuName = "Commands/Accelerate Forward")]
+    [Description("Accelerates the tank in facing direction")]
     class AccelerateForward : SimpleCommand
     {
         public override CommandType Type
