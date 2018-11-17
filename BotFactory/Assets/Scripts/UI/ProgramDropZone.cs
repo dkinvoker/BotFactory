@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.ComponentModel;
 using UnityEngine.UI;
+using static UnityEngine.UI.Dropdown;
 
 namespace Assets.Scripts.UI
 {
@@ -34,6 +35,10 @@ namespace Assets.Scripts.UI
         }
 
         private GameObject _dummy = null;
+
+        private void Start()
+        {  
+        }
 
         public void OnDrop(PointerEventData eventData)
         {

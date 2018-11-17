@@ -20,13 +20,13 @@ namespace Assets.Scripts.Commands
 
         public override CommandError Execute(Tank tank)
         {
-            if (tank.Memory[_memoryIndex] == null)
+            if (tank.Memory[MemoryIndex] == null)
             {
-                return new CommandError($"Memory at {_memoryIndex} is empty. Cannot delete empty memory!");
+                return new CommandError($"Memory at {MemoryIndex} is empty. Cannot delete empty memory!");
             }
             else
             {
-                tank.Memory.StoreValue(null, _memoryIndex);
+                tank.Memory.StoreValue(null, MemoryIndex);
                 return null;
             }
         }

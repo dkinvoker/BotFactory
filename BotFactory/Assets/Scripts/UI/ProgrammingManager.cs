@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
-    class FillAvailableCommands : MonoBehaviour
+    class ProgrammingManager : MonoBehaviour
     {
         public GameObject CommandPrefab;
         private readonly Command[] _allCommands = 
@@ -21,6 +21,8 @@ namespace Assets.Scripts.UI
             new TurnToPosition(),
             new TurnWeaponToPosition()
         };
+
+        public int MemorySize { get; set; } = 3;
 
         private void Start()
         {

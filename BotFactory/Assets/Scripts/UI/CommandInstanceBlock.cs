@@ -13,7 +13,7 @@ namespace Assets.Scripts.UI
     {
         public Command Command { get; set; }
 
-        private void Start()
+        protected virtual void Start()
         {
             this.GetComponentInChildren<Text>().text = Command.GetType().Name;
         }

@@ -27,14 +27,14 @@ namespace Assets.Scripts.Commands
 
             if (enemyTanks == null || enemyTanks.Length == 0)
             {
-                var success = tank.Memory.StoreValue(null, _memoryIndex);
+                var success = tank.Memory.StoreValue(null, MemoryIndex);
                 if (success)
                 {
                     return null;
                 }
                 else
                 {
-                    return new CommandError($"Memory at {_memoryIndex} is full! Clear memory first");
+                    return new CommandError($"Memory at {MemoryIndex} is full! Clear memory first");
                 }
             }
             else
@@ -52,14 +52,14 @@ namespace Assets.Scripts.Commands
                 }
 
                 var variable = new Position(nearestEnemy.transform.position);
-                var success = tank.Memory.StoreValue(variable, _memoryIndex);
+                var success = tank.Memory.StoreValue(variable, MemoryIndex);
                 if (success)
                 {
                     return null;
                 }
                 else
                 {
-                    return new CommandError($"Memory at {_memoryIndex} is full! Clear memory first");
+                    return new CommandError($"Memory at {MemoryIndex} is full! Clear memory first");
                 }
             }
 

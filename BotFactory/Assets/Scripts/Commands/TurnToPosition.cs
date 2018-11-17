@@ -22,14 +22,14 @@ namespace Assets.Scripts.Commands
 
         public override CommandError Execute(Tank tank)
         {
-            var memoryData = tank.Memory[_memoryIndex];
+            var memoryData = tank.Memory[MemoryIndex];
             if (memoryData == null)
             {
-                return new CommandError("Memory at" + _memoryIndex + " is empty");
+                return new CommandError("Memory at" + MemoryIndex + " is empty");
             }
             else if ( !(memoryData is Position) )
             {
-                return new CommandError("Memory at" + _memoryIndex + " is not a Position type");
+                return new CommandError("Memory at" + MemoryIndex + " is not a Position type");
             }
             else
             {
