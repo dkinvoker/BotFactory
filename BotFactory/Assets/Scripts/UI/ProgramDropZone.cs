@@ -34,7 +34,7 @@ namespace Assets.Scripts.UI
                 prefabCopy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
             }
 
-            CopyComandInfo(prefabCopy, commandBlock);
+            prefabCopy.GetComponent<CommandInstanceBlock>().Command = commandBlock.CommandBlueprint.Copy();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -59,11 +59,6 @@ namespace Assets.Scripts.UI
             {
                 Destroy(_dummy);
             }
-        }
-
-        private void CopyComandInfo(GameObject prefabCopy, CommandBlock commandBlock)
-        {
-            prefabCopy.GetComponent<CommandInstanceBlock>().Command = commandBlock.CommandBlueprint.Copy();
         }
     }
 }
