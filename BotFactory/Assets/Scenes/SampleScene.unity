@@ -177,7 +177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &534669902
 GameObject:
@@ -385,17 +385,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4690937537916336, guid: bb2b72cb218f27945b20372c1705b205, type: 2}
       propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 54515940934505456, guid: bb2b72cb218f27945b20372c1705b205,
-        type: 2}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 54515940934505456, guid: bb2b72cb218f27945b20372c1705b205,
-        type: 2}
-      propertyPath: m_UseGravity
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4690937537916336, guid: bb2b72cb218f27945b20372c1705b205, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -404,11 +394,6 @@ Prefab:
     - target: {fileID: 4690937537916336, guid: bb2b72cb218f27945b20372c1705b205, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 54515940934505456, guid: bb2b72cb218f27945b20372c1705b205,
-        type: 2}
-      propertyPath: m_Drag
-      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 114944799813049464, guid: bb2b72cb218f27945b20372c1705b205,
         type: 2}

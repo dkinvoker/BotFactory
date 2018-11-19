@@ -3,85 +3,96 @@ using Assets.Scripts.Commands;
 using System;
 using System.Collections.Generic;
 
-public class ProgramController
+namespace Assets.Scripts
 {
-    public static Dictionary<string, List<List<Command>>> Programs { get; private set; }
-
-    public int ProgramCounter { get; set; }
-
-    private string _player { get; set; } = string.Empty;
-    private int _programIndex = -1;
-
-    private List<Command> CurrnetProgram
+    public class ProgramController
     {
-        get
+        public static Dictionary<string, List<List<Command>>> Programs { get; private set; }
+
+        public int ProgramCounter { get; set; }
+
+        private string _player { get; set; } = string.Empty;
+        private int _programIndex = -1;
+
+        private List<Command> CurrnetProgram
         {
-            return Programs[_player][_programIndex];
-        }
-    }
-
-    static ProgramController()
-    {
-        Programs = new Dictionary<string, List<List<Command>>>();
-    }
-
-    public ProgramController()
-    {
-        ProgramCounter = 0;
-    }
-
-    private CommandError RunCurrentCommand(Tank tank)
-    {
-        var returner = CurrnetProgram[ProgramCounter].Execute(tank);
-        if (returner == null)
-        {
-            if (ProgramCounter == CurrnetProgram.Count - 1)
+            get
             {
-                ProgramCounter = 0;
-            }
-            else
-            {
-                ProgramCounter++;
+                return Programs[_player][_programIndex];
             }
         }
 
-        return returner;
-    }
-
-    private CommandType GetCurrentCommandType()
-    {
-        return CurrnetProgram[ProgramCounter].Type;
-    }
-
-    public CommandError ExecuteCommandPacket(Tank tank)
-    {
-        CommandError commandError = null;
-        List<CommandType> usedTypes = new List<CommandType>(); 
-        while (!usedTypes.Contains( GetCurrentCommandType() ))
+        static ProgramController()
         {
-            usedTypes.Add(GetCurrentCommandType());
-            commandError = RunCurrentCommand(tank);
-            if (commandError != null)
+            Programs = new Dictionary<string, List<List<Command>>>();
+        }
+
+        public ProgramController()
+        {
+            ProgramCounter = 0;
+        }
+
+        public int MaxCommandIndex
+        {
+            get
             {
-                return commandError;
+                return CurrnetProgram.Count - 1;
             }
         }
 
-        return commandError;
-    }
-
-    public static void RegisterProgram(string player, List<Command> program)
-    {
-        if (!Programs.ContainsKey(player))
+        private CommandError RunCurrentCommand(Tank tank)
         {
-            Programs.Add(player, new List<List<Command>>());
-        }
-        Programs[player].Add(program);      
-    }
+            var returner = CurrnetProgram[ProgramCounter].Execute(tank);
+            if (returner == null)
+            {
+                if (ProgramCounter == CurrnetProgram.Count - 1)
+                {
+                    ProgramCounter = 0;
+                }
+                else
+                {
+                    ProgramCounter++;
+                }
+            }
 
-    public void SetToTankProgram(Tank tank)
-    {
-        _player = tank.Player;
-        _programIndex = tank.ProgramInex;
+            return returner;
+        }
+
+        private CommandType GetCurrentCommandType()
+        {
+            return CurrnetProgram[ProgramCounter].Type;
+        }
+
+        public CommandError ExecuteCommandPacket(Tank tank)
+        {
+            CommandError commandError = null;
+            List<CommandType> usedTypes = new List<CommandType>();
+            while (!usedTypes.Contains(GetCurrentCommandType()))
+            {
+                usedTypes.Add(GetCurrentCommandType());
+                commandError = RunCurrentCommand(tank);
+                if (commandError != null)
+                {
+                    return commandError;
+                }
+            }
+
+            return commandError;
+        }
+
+        public static void RegisterProgram(string player, List<Command> program)
+        {
+            if (!Programs.ContainsKey(player))
+            {
+                Programs.Add(player, new List<List<Command>>());
+            }
+            Programs[player].Add(program);
+        }
+
+        public void SetToTankProgram(Tank tank)
+        {
+            _player = tank.Player;
+            _programIndex = tank.ProgramIndex;
+        }
     }
 }

@@ -7,73 +7,88 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tank : MonoBehaviour
+namespace Assets.Scripts
 {
-    #region Props and publics
-    public ProgramController ProgramController { get; set; } = new ProgramController();
-    public Memory Memory;
-    public Weapon Weapon;
-    public Wheels Wheels;
-    public double HP { get; set; }
-    public string Player;
-    public string Side;
-    public bool IsLocked { get; set; } = false;
-    public int ProgramInex = 0;
-    #endregion
-
-    #region Private Variables
-    #endregion
-
-    #region Tank Reboot
-    private void Reboot()
+    public class Tank : MonoBehaviour
     {
-        IsLocked = true;
-        ProgramController.ProgramCounter = 0;
-        StartCoroutine(RebootCoorutine());
-    }
+        #region Props and publics
+        public ProgramController ProgramController { get; set; } = new ProgramController();
+        public Memory Memory;
+        public Weapon Weapon;
+        public Wheels Wheels;
+        public double HP { get; set; }
+        public string Player;
+        public string Side;
+        public bool IsLocked { get; set; } = false;
+        public int ProgramIndex = 0;
+        #endregion
 
-    private IEnumerator RebootCoorutine()
-    {
-        yield return new WaitForSeconds(4);
-        IsLocked = false;
-    }
-    #endregion
+        #region Private Variables
+        #endregion
 
-    #region Errorraport
-    private void RaportError(CommandError error)
-    {
-        string finalMessage = $"Error occurred at {ProgramController.ProgramCounter} : {error.Message}. Rebooting tank";
-        Debug.LogError(finalMessage);
-    }
-    #endregion
-
-    #region Monos
-    // Use this for initialization
-    void Start()
-    {
-        ProgramController.SetToTankProgram(this);
-    }
-
-    // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
-    private void FixedUpdate()
-    {
-        if (!IsLocked)
+        #region Tank Reboot
+        private void Reboot()
         {
-            var packetError = ProgramController.ExecuteCommandPacket(this);
-            if (packetError != null)
-            {
-                RaportError(packetError);
-                Reboot();
-            }
+            IsLocked = true;
+            ProgramController.ProgramCounter = 0;
+            StartCoroutine(RebootCoorutine());
         }
 
+        private IEnumerator RebootCoorutine()
+        {
+            yield return new WaitForSeconds(4);
+            IsLocked = false;
+        }
+        #endregion
+
+        #region Errorraport
+        private void RaportError(CommandError error)
+        {
+            string finalMessage = $"Error occurred at {ProgramController.ProgramCounter} : {error.Message}. Rebooting tank";
+            Debug.LogError(finalMessage);
+        }
+        #endregion
+
+        #region Monos
+        // Use this for initialization
+        void Start()
+        {
+            //-----TESTS-----
+            List<Command> testProgram = new List<Command>();
+            testProgram.Add(new ClearMemory());
+            testProgram.Add(new FindNearestEnemy() { MemoryIndex = 0 });
+            testProgram.Add(new TurnToPosition() { MemoryIndex = 0 });
+            testProgram.Add(new JumpIfFacingEnemy() { JumpPosition = 5 });
+            testProgram.Add(new Jump() { JumpPosition = 0 });
+            testProgram.Add(new AccelerateForward());
+            ProgramController.RegisterProgram("Player1", testProgram);
+            this.ProgramIndex = 1;
+            //-----TESTS-----
+
+            ProgramController.SetToTankProgram(this);
+        }
+
+        // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
+        private void FixedUpdate()
+        {
+            if (!IsLocked)
+            {
+                var packetError = ProgramController.ExecuteCommandPacket(this);
+                if (packetError != null)
+                {
+                    RaportError(packetError);
+                    Reboot();
+                }
+            }
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+        #endregion
+
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-    #endregion
-
 }

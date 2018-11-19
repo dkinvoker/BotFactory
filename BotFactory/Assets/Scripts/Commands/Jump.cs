@@ -12,9 +12,16 @@ namespace Assets.Scripts.Commands
     {
         public override CommandError Execute(Tank tank)
         {
-            //-1 position jumping is required becouse program controller incresses program counter at the end of each execution
-            tank.ProgramController.ProgramCounter = this.JumpPosition - 1;
-            return null;
+            if (JumpPosition > tank.ProgramController.MaxCommandIndex || JumpPosition < 0)
+            {
+                throw new Exception("Invalid jumping index");
+            }
+            else
+            {
+                //-1 position jumping is required becouse program controller incresses program counter at the end of each execution
+                tank.ProgramController.ProgramCounter = this.JumpPosition - 1;
+                return null;
+            }
         }
     }
 }
