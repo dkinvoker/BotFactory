@@ -25,12 +25,12 @@ namespace Assets.Scripts.Commands
         public override CommandError Execute(Tank tank)
         {
             var body = tank.GetComponent<Rigidbody>();
+            var transform = tank.transform;
             var speed = tank.Wheels.TurningSpeed;
+            Vector3 rotationVector = new Vector3(0, speed, 0);
 
-            if (body.angularVelocity.y < speed)
-            {
-                body.AddTorque(Vector3.up * speed, ForceMode.Impulse);
-            }
+            transform.Rotate(rotationVector, Space.Self);
+            body.velocity = Quaternion.Euler(rotationVector) * body.velocity;
 
             return null;
         }
