@@ -36,10 +36,22 @@ namespace Assets.Scripts.Commands
                 var yourPosition = tank.transform.position;
                 var enemyPosition = (memoryData as Position).Value;
 
-                TurnLeft turnLeft = new TurnLeft();
-                TurnRight turnRight = new TurnRight();
+                var targetDirection = enemyPosition - yourPosition;
 
-                throw new NotImplementedException();
+                float angleDirection = Vector3.SignedAngle(tank.transform.forward, targetDirection, new Vector3(0, 90, 0));
+
+                //If you want you can check if angle is == 0, and abort rotation
+
+                if (angleDirection > 0)
+                {
+                    new TurnRight().Execute(tank);
+                }
+                else
+                {
+                    new TurnLeft().Execute(tank);
+                }
+                
+                return null;
             }
         }
     }
