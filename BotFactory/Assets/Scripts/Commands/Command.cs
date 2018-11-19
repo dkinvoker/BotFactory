@@ -32,6 +32,7 @@ namespace Assets.Scripts.Commands
         PureMemory,
         Shoot,
         Detect,
-        WeaponRotation
+        WeaponRotation,
+        Jump
     }
 }
