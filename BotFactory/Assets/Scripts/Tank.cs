@@ -55,12 +55,13 @@ namespace Assets.Scripts
         {
             //-----TESTS-----
             List<Command> testProgram = new List<Command>();
-            testProgram.Add(new ClearMemory());
-            testProgram.Add(new FindNearestEnemy() { MemoryIndex = 0 });
-            testProgram.Add(new TurnToPosition() { MemoryIndex = 0 });
-            testProgram.Add(new JumpIfFacingEnemy() { JumpPosition = 5 });
-            testProgram.Add(new Jump() { JumpPosition = 0 });
-            testProgram.Add(new AccelerateForward());
+            testProgram.Add(new TurnWeaponRight());
+            //testProgram.Add(new ClearMemory());
+            //testProgram.Add(new FindNearestEnemy() { MemoryIndex = 0 });
+            //testProgram.Add(new TurnToPosition() { MemoryIndex = 0 });
+            //testProgram.Add(new JumpIfFacingEnemy() { JumpPosition = 5 });
+            //testProgram.Add(new Jump() { JumpPosition = 0 });
+            //testProgram.Add(new AccelerateForward());
             ProgramController.RegisterProgram("Player1", testProgram);
             this.ProgramIndex = 1;
             //-----TESTS-----
