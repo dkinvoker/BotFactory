@@ -14,3 +14,4 @@ MonoBehaviour:
   Damage: 10
   ReloadTime: 4
   BulletSpeed: 4
+  Range: 15
