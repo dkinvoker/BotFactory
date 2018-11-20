@@ -15,15 +15,21 @@ namespace Assets.Scripts
         public ProgramController ProgramController { get; set; } = new ProgramController();
         public Memory Memory;
         public Weapon Weapon;
+        public Transform FirePoint { get; private set; }
         public Wheels Wheels;
-        public double HP { get; set; }
+        public int HP { get; set; }
         public string Player;
         public string Side;
         public bool IsLocked { get; set; } = false;
         public int ProgramIndex = 0;
+        public float RemainingReloadTime { get; set; } = -1.0f;
         #endregion
 
-        #region Private Variables
+        #region Private Variables  
+        #endregion
+
+        #region Others
+        public bool IsReadyToFire { get { return RemainingReloadTime <= 0; } }
         #endregion
 
         #region Tank Reboot
@@ -58,13 +64,17 @@ namespace Assets.Scripts
             testProgram.Add(new ClearMemory());
             testProgram.Add(new FindNearestEnemy() { MemoryIndex = 0 });
             testProgram.Add(new TurnWeaponToPosition() { MemoryIndex = 0 });
-            testProgram.Add(new JumpIfFacingEnemy() { JumpPosition = 5 });
+            testProgram.Add(new JumpIfFacingEnemy() { JumpPosition = 5 });  
             testProgram.Add(new Jump() { JumpPosition = 0 });
-            testProgram.Add(new AccelerateForward());
+            testProgram.Add(new JumpIfWeaponReady() { JumpPosition = 7 });
+            testProgram.Add(new Jump() { JumpPosition = 0 });
+            testProgram.Add(new Fire());
             ProgramController.RegisterProgram("Player1", testProgram);
             this.ProgramIndex = 1;
             //-----TESTS-----
 
+            HP = Wheels.HP;
+            FirePoint = this.GetComponentsInChildren<Transform>()[2].GetComponentsInChildren<Transform>()[1];
             ProgramController.SetToTankProgram(this);
         }
 
@@ -86,7 +96,15 @@ namespace Assets.Scripts
         // Update is called once per frame
         void Update()
         {
+            if (RemainingReloadTime > 0)
+            {
+                RemainingReloadTime -= Time.deltaTime;
+            }       
 
+            if (HP <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
         #endregion
 

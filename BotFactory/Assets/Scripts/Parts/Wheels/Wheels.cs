@@ -8,6 +8,7 @@ namespace Assets.Scripts.Parts.Wheels
         public float Acceleration;
         public float MaxSpeed;
         public float TurningSpeed;
+        public int HP; 
     }
 }
 

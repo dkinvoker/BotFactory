@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a299629023a9454e964550d50cd0893, type: 3}
   m_Name: Basic Weapon
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 15
   ReloadTime: 4
-  BulletSpeed: 4
-  Range: 15
+  BulletSpeed: 15
+  Range: 75
+  Bullet: {fileID: 1412142431961536, guid: 71b4f99e8b82f1b4f994f0170e829f20, type: 2}

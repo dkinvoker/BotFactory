@@ -12,13 +12,16 @@ namespace Assets.Scripts
     {
         private float _rangeRemaining;
         private float _speed;
-        public float Damage { get; private set; }
+        public string Side { get; private set; }
+        public int Damage { get; private set; }
+        private bool _emitionColistionOccured = false;
 
-        public Bullet(Weapon weapon)
+        public void Init(Tank tank)
         {
-            _rangeRemaining = weapon.Range;
-            _speed = weapon.BulletSpeed;
-            Damage = weapon.Damage;
+            _rangeRemaining = tank.Weapon.Range;
+            _speed = tank.Weapon.BulletSpeed;
+            Side = tank.Side;
+            Damage = tank.Weapon.Damage;
         }
 
         private void Update()
@@ -32,6 +35,23 @@ namespace Assets.Scripts
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (_emitionColistionOccured == false)
+            {
+                _emitionColistionOccured = true;
+                return;
+            }
+
+            //-----
+            var tank = other.GetComponent<Tank>();
+            if (tank != null && tank.Side != this.Side)
+            {
+                tank.HP -= this.Damage;
+            }
+            Destroy(this.gameObject);
         }
 
 

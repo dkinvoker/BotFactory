@@ -30,7 +30,7 @@ namespace Assets.Scripts.Commands
         Move,
         Rotation,
         PureMemory,
-        Shoot,
+        Fire,
         Detect,
         WeaponRotation,
         Jump
