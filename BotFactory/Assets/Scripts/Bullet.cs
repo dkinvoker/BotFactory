@@ -14,7 +14,7 @@ namespace Assets.Scripts
         private float _speed;
         public string Side { get; private set; }
         public int Damage { get; private set; }
-        private bool _emitionColistionOccured = false;
+        private Collider _parentColider;
 
         public void Init(Tank tank)
         {
@@ -22,6 +22,7 @@ namespace Assets.Scripts
             _speed = tank.Weapon.BulletSpeed;
             Side = tank.Side;
             Damage = tank.Weapon.Damage;
+            _parentColider = tank.GetComponent<Collider>();
         }
 
         private void Update()
@@ -39,9 +40,8 @@ namespace Assets.Scripts
 
         private void OnTriggerEnter(Collider other)
         {
-            if (_emitionColistionOccured == false)
+            if (other == _parentColider)
             {
-                _emitionColistionOccured = true;
                 return;
             }
 

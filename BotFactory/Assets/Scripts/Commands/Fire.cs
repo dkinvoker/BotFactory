@@ -22,7 +22,7 @@ namespace Assets.Scripts.Commands
             if (tank.IsReadyToFire)
             {
                 var position = tank.FirePoint.position;
-                var rotation = tank.transform.rotation;
+                var rotation = tank.FirePoint.transform.rotation;
                 var bulletObject = tank.Weapon.CreateBulletAtLocation(position, rotation);
                 var bullet = bulletObject.GetComponent<Bullet>();
                 bullet.Init(tank);

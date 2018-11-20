@@ -64,7 +64,7 @@ namespace Assets.Scripts
             testProgram.Add(new ClearMemory());
             testProgram.Add(new FindNearestEnemy() { MemoryIndex = 0 });
             testProgram.Add(new TurnWeaponToPosition() { MemoryIndex = 0 });
-            testProgram.Add(new JumpIfFacingEnemy() { JumpPosition = 5 });  
+            testProgram.Add(new JumpIfAimingEnemy() { JumpPosition = 5 });
             testProgram.Add(new Jump() { JumpPosition = 0 });
             testProgram.Add(new JumpIfWeaponReady() { JumpPosition = 7 });
             testProgram.Add(new Jump() { JumpPosition = 0 });
