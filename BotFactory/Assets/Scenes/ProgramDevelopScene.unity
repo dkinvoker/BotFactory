@@ -146,8 +146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 135.75, y: 51}
-  m_SizeDelta: {x: -282.5, y: 45}
+  m_AnchoredPosition: {x: 158.25, y: 51}
+  m_SizeDelta: {x: -327.5, y: 45}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &5439610
 MonoBehaviour:
@@ -217,7 +217,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -5, y: 48}
-  m_SizeDelta: {x: -282.6, y: -106}
+  m_SizeDelta: {x: -327, y: -106}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &20722592
 MonoBehaviour:
@@ -694,7 +694,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 5, y: 0}
-  m_SizeDelta: {x: 265.5, y: -10}
+  m_SizeDelta: {x: 310, y: -10}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1940903187
 MonoBehaviour:
@@ -766,6 +766,8 @@ MonoBehaviour:
   SimpleCommandPrefab: {fileID: 1572393298505716, guid: 8fe26849298463a46b8e2256249e5b61,
     type: 2}
   MemoryCommandPrefab: {fileID: 1010250156892362, guid: 9668715ab31cc2942ac412c983b177cb,
+    type: 2}
+  JumpCommandPrefab: {fileID: 1602989034676108, guid: 9ab0ce4420fb4c048a29fd42ff38973c,
     type: 2}
 --- !u!1 &1950428004
 GameObject:

@@ -12,10 +12,23 @@ namespace Assets.Scripts.Commands
     {
         public override CommandError Execute(Tank tank)
         {
+            var shouldJump = false;
+
             if (tank.IsReadyToFire)
+            {
+                shouldJump = true;
+            }
+
+            if (Negate)
+            {
+                shouldJump = !shouldJump;
+            }
+
+            if(shouldJump)
             {
                 new Jump() { JumpPosition = this.JumpPosition }.Execute(tank);
             }
+            
             return null;
         }
     }

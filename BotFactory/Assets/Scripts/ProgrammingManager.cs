@@ -16,11 +16,19 @@ namespace Assets.Scripts
         private readonly Command[] _allCommands = 
         {
             new AccelerateForward(),
+            new ClearMemory(),
             new DeleteMemoryAt(),
             new FindNearestEnemy(),
+            new Fire(),
+            new Jump(),
+            new JumpIfAimingEnemy(),
+            new JumpIfFacingEnemy(),
+            new JumpIfWeaponReady(),
             new TurnLeft(),
             new TurnRight(),
             new TurnToPosition(),
+            new TurnWeaponLeft(),
+            new TurnWeaponRight(),
             new TurnWeaponToPosition()
         };
 

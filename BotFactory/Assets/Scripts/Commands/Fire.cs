@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
+    [Description("Fires! If weapon is not ready using this command will trigger an error")]
     class Fire : Command
     {
         public override CommandType Type

@@ -9,6 +9,7 @@ namespace Assets.Scripts.Commands
     abstract class JumpCommand : Command
     {
         public int JumpPosition { get; set; } = 0;
+        public bool Negate { get; set; } = false;
 
         public override CommandType Type
         {

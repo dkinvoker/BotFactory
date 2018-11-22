@@ -18,6 +18,9 @@ namespace Assets.Scripts.UI
     {
         public GameObject SimpleCommandPrefab;
         public GameObject MemoryCommandPrefab;
+        public GameObject JumpCommandPrefab;
+
+        public GameObject JumpTargetPrefab;
 
         public int? DummySlot
         {
@@ -52,6 +55,15 @@ namespace Assets.Scripts.UI
             else if (commandBlock.CommandBlueprint is MemoryCommand)
             {
                 prefabCopy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
+            }
+            else if (commandBlock.CommandBlueprint is JumpCommand)
+            {
+                prefabCopy = GameObject.Instantiate(JumpCommandPrefab, this.transform);
+                var targetBlockCopy = GameObject.Instantiate(JumpTargetPrefab, this.transform);
+
+                Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+                prefabCopy.GetComponent<Image>().color = jumpColor;
+                targetBlockCopy.GetComponent<Image>().color = jumpColor;
             }
 
             prefabCopy.transform.SetSiblingIndex(DummySlot.Value);

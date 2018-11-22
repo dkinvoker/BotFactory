@@ -53,7 +53,5 @@ namespace Assets.Scripts
             }
             Destroy(this.gameObject);
         }
-
-
     }
 }

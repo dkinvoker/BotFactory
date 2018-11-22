@@ -13,6 +13,8 @@ namespace Assets.Scripts.Commands
     {
         public override CommandError Execute(Tank tank)
         {
+            bool shouldJump = false;
+
             var directionalVector = tank.FirePoint.transform.forward;
             var reycastedObjects = Physics.RaycastAll(tank.transform.position + new Vector3(0, 0.2f, 0), directionalVector);
             if (reycastedObjects.Length > 0)
@@ -20,9 +22,20 @@ namespace Assets.Scripts.Commands
                 var firstHitObject = reycastedObjects[0];
                 if (firstHitObject.transform.gameObject.GetComponent<Tank>() != null)
                 {
-                    return new Jump() { JumpPosition = this.JumpPosition }.Execute(tank);
+                    shouldJump = true;
                 }
             }
+
+            if (Negate)
+            {
+                shouldJump = !shouldJump;
+            }
+
+            if (shouldJump)
+            {
+                return new Jump() { JumpPosition = this.JumpPosition }.Execute(tank);
+            }           
+
             return null;
         }
     }
