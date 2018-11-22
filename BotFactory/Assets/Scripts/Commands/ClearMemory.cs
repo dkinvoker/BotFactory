@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Assets.Scripts.Commands
 {
     [Description("Cleares all memory cells")]
-    class ClearMemory : Command
+    class ClearMemory : SimpleCommand
     {
         public override CommandType Type
         {

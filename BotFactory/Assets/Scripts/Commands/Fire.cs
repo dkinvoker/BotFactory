@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Scripts.Commands
 {
     [Description("Fires! If weapon is not ready using this command will trigger an error")]
-    class Fire : Command
+    class Fire : SimpleCommand
     {
         public override CommandType Type
         {

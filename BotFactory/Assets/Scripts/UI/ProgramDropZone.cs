@@ -46,6 +46,13 @@ namespace Assets.Scripts.UI
         public void OnDrop(PointerEventData eventData)
         {
             var commandBlock = eventData.pointerDrag.GetComponent<CommandBlock>();
+
+            if (commandBlock == null)
+            {
+                DestroyDummy();
+                return;
+            }
+
             GameObject prefabCopy = null;
 
             if (commandBlock.CommandBlueprint is SimpleCommand)
@@ -69,7 +76,7 @@ namespace Assets.Scripts.UI
             prefabCopy.transform.SetSiblingIndex(DummySlot.Value);
             prefabCopy.GetComponent<CommandInstanceBlock>().Command = commandBlock.CommandBlueprint.Copy();
 
-            OnPointerExit(eventData);
+            DestroyDummy();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -86,10 +93,31 @@ namespace Assets.Scripts.UI
 
                 _dummy.transform.SetParent(this.transform);
                 _dummy.transform.SetSiblingIndex(DummySlot.Value);
+
+
+                var dragableInstance = eventData.pointerDrag.GetComponent<DragableCommandInstance>();
+                if (dragableInstance != null)
+                {
+                    dragableInstance.ParentToReturn = this.gameObject;
+                }
+
             }
         }
 
         public void OnPointerExit(PointerEventData eventData)
+        {
+            DestroyDummy();
+            if (eventData.pointerDrag != null)
+            {
+                var dragableInstance = eventData.pointerDrag.GetComponent<DragableCommandInstance>();
+                if (dragableInstance != null)
+                {
+                    dragableInstance.ParentToReturn = null;
+                }
+            }
+        }
+
+        private void DestroyDummy()
         {
             if (_dummy != null)
             {

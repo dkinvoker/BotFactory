@@ -72,8 +72,7 @@ namespace Assets.Scripts.UI
                         break;
                     }
                 }
-            }
-                   
+            }              
         }
 
         public void OnEndDrag(PointerEventData eventData)

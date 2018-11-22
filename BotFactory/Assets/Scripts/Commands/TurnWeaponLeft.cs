@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Scripts.Commands
 {
     [Description("Turns weapon left")]
-    class TurnWeaponLeft : Command
+    class TurnWeaponLeft : SimpleCommand
     {
         public override CommandType Type
         {
