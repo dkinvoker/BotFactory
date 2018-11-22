@@ -70,6 +70,9 @@ namespace Assets.Scripts.UI
                 Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
                 prefabCopy.GetComponent<Image>().color = jumpColor;
                 targetBlockCopy.GetComponent<Image>().color = jumpColor;
+
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock = targetBlockCopy;
+                targetBlockCopy.GetComponent<JumpTarget>().JumpParent = prefabCopy;
             }
 
             prefabCopy.transform.SetSiblingIndex(DummySlot.Value);

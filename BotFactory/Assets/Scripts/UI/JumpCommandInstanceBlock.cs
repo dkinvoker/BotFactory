@@ -17,5 +17,15 @@ namespace Assets.Scripts.UI
         {
             (this.Command as JumpCommand).Negate = newStatus;
         }
+
+        private void OnDestroy()
+        {
+            if (TargetBlock != null)
+            {
+                TargetBlock.GetComponent<JumpTarget>().JumpParent = null;
+                Destroy(TargetBlock);
+            }  
+        }
+
     }
 }
