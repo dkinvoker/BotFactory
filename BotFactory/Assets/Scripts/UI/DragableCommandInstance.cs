@@ -12,24 +12,27 @@ namespace Assets.Scripts.UI
         IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         private GameObject _programmingPanel;
-        public GameObject ParentToReturn = null;
+        private GameObject _parentToReturn = null;
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-            this.transform.SetParent(this.transform.parent);
+            this.transform.SetParent(this.transform.parent.parent);
+            _programmingPanel = GameObject.FindGameObjectWithTag("Programming Panel");
+
+            _programmingPanel.GetComponent<ProgramDropZone>().CreateDummy();
         }
 
         public void OnDrag(PointerEventData eventData)
         {
             this.transform.position = eventData.position;
-
-            _programmingPanel = GameObject.FindGameObjectWithTag("Programming Panel");
+ 
             var droppingZone = _programmingPanel.GetComponent<ProgramDropZone>();
 
             if (droppingZone.DummySlot != null)
             {
+                _parentToReturn = _programmingPanel;
                 for (int i = 0; i < _programmingPanel.transform.childCount; ++i)
                 {
                     var obj = _programmingPanel.transform.GetChild(i);
@@ -40,21 +43,26 @@ namespace Assets.Scripts.UI
                     }
                 }
             }
+            else
+            {
+                this._parentToReturn = null;
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
             GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-            if (ParentToReturn == null)
+            if (_parentToReturn == null)
             {
                 Destroy(this.gameObject);
             }
             else
             {
-                this.transform.SetParent(ParentToReturn.transform);
+                this.transform.SetParent(_parentToReturn.transform);
                 var droppingZone = _programmingPanel.GetComponent<ProgramDropZone>();
                 this.transform.SetSiblingIndex(droppingZone.DummySlot.Value);
+                droppingZone.DestroyDummy();
             }
         }
     }

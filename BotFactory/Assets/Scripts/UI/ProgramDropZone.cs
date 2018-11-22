@@ -49,7 +49,6 @@ namespace Assets.Scripts.UI
 
             if (commandBlock == null)
             {
-                DestroyDummy();
                 return;
             }
 
@@ -83,47 +82,38 @@ namespace Assets.Scripts.UI
         {
             if (eventData.pointerDrag != null)
             {
-                _dummy = new GameObject();
-
-                var leyoutElement = _dummy.AddComponent<LayoutElement>();
-                leyoutElement.preferredHeight = SimpleCommandPrefab.GetComponent<LayoutElement>().preferredHeight;
-                leyoutElement.preferredWidth = SimpleCommandPrefab.GetComponent<LayoutElement>().preferredWidth;
-                leyoutElement.flexibleHeight = 0;
-                leyoutElement.flexibleWidth = 0;
-
-                _dummy.transform.SetParent(this.transform);
-                _dummy.transform.SetSiblingIndex(DummySlot.Value);
-
-
-                var dragableInstance = eventData.pointerDrag.GetComponent<DragableCommandInstance>();
-                if (dragableInstance != null)
-                {
-                    dragableInstance.ParentToReturn = this.gameObject;
-                }
-
+                CreateDummy();
             }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             DestroyDummy();
-            if (eventData.pointerDrag != null)
-            {
-                var dragableInstance = eventData.pointerDrag.GetComponent<DragableCommandInstance>();
-                if (dragableInstance != null)
-                {
-                    dragableInstance.ParentToReturn = null;
-                }
-            }
         }
 
-        private void DestroyDummy()
+        public void DestroyDummy()
         {
             if (_dummy != null)
             {
                 Destroy(_dummy);
                 _dummy = null;
             }
+        }
+
+        public void CreateDummy()
+        {
+            DestroyDummy();
+
+            _dummy = new GameObject();
+
+            var leyoutElement = _dummy.AddComponent<LayoutElement>();
+            leyoutElement.preferredHeight = SimpleCommandPrefab.GetComponent<LayoutElement>().preferredHeight;
+            leyoutElement.preferredWidth = SimpleCommandPrefab.GetComponent<LayoutElement>().preferredWidth;
+            leyoutElement.flexibleHeight = 0;
+            leyoutElement.flexibleWidth = 0;
+
+            _dummy.transform.SetParent(this.transform);
+            _dummy.transform.SetSiblingIndex(DummySlot.Value);
         }
 
     }
