@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114955424259318834}
   - component: {fileID: 225321052332635912}
   - component: {fileID: 114334577380835326}
+  - component: {fileID: 114445279163940862}
   - component: {fileID: 114600290312963930}
   m_Layer: 5
   m_Name: Memory Command Instance
@@ -466,6 +467,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114445279163940862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010250156892362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b5f690b5d9fee448048b9473c409c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentToReturn: {fileID: 0}
 --- !u!114 &114600290312963930
 MonoBehaviour:
   m_ObjectHideFlags: 1

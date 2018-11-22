@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114446573666247200}
   - component: {fileID: 225338749496825012}
   - component: {fileID: 114007759840607854}
+  - component: {fileID: 114832285161124984}
   - component: {fileID: 114352996638248248}
   m_Layer: 5
   m_Name: Jump Command Instance
@@ -126,8 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20138b471d37cd84a9bfabce8caaccde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpTargetBlock: {fileID: 1602989034676108, guid: 9ab0ce4420fb4c048a29fd42ff38973c,
-    type: 2}
 --- !u!114 &114179121468737706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,6 +293,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114832285161124984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327370198848574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b5f690b5d9fee448048b9473c409c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentToReturn: {fileID: 0}
 --- !u!114 &114957886008499822
 MonoBehaviour:
   m_ObjectHideFlags: 1

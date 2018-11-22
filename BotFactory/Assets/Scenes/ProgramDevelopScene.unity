@@ -767,7 +767,9 @@ MonoBehaviour:
     type: 2}
   MemoryCommandPrefab: {fileID: 1010250156892362, guid: 9668715ab31cc2942ac412c983b177cb,
     type: 2}
-  JumpCommandPrefab: {fileID: 1602989034676108, guid: 9ab0ce4420fb4c048a29fd42ff38973c,
+  JumpCommandPrefab: {fileID: 1327370198848574, guid: 60670d29c71e3c441a63b7400c011693,
+    type: 2}
+  JumpTargetPrefab: {fileID: 1602989034676108, guid: 9ab0ce4420fb4c048a29fd42ff38973c,
     type: 2}
 --- !u!1 &1950428004
 GameObject:
