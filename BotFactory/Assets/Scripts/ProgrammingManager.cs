@@ -54,8 +54,40 @@ namespace Assets.Scripts
         {
             var programmingPanel = GameObject.FindGameObjectWithTag("Programming Panel");
             var blocks = programmingPanel.transform.GetComponentsInChildren<CommandInstanceBlock>();
-            var program = blocks.Select( u => u.Command ).ToList();
+            var childCount = programmingPanel.transform.childCount;
+
+            //Decoding Target Blocks To Jump Indexes
+            foreach (var block in blocks)
+            {
+                if (block is JumpCommandInstanceBlock)
+                {
+                    var jumpTarget = (block as JumpCommandInstanceBlock).TargetBlock;
+                    int consideringJumpIndex = jumpTarget.transform.GetSiblingIndex();
+                    while (true)
+                    {
+                        if (consideringJumpIndex == childCount - 1)
+                        {
+                            consideringJumpIndex = 0;
+                        }
+                        else
+                        {
+                            consideringJumpIndex++;
+                        }
+
+                        var commandBlock = programmingPanel.transform.GetChild(consideringJumpIndex).GetComponent<CommandInstanceBlock>();
+                        if (commandBlock != null)
+                        {
+                            var command = (block as JumpCommandInstanceBlock).Command;
+                            (command as JumpCommand).JumpPosition = consideringJumpIndex;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            var program = blocks.Select(u => u.Command).ToList();
             ProgramController.RegisterProgram(player, program);
         }
+
     }
 }
