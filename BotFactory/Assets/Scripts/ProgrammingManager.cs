@@ -78,7 +78,7 @@ namespace Assets.Scripts
                         if (commandBlock != null)
                         {
                             var command = (block as JumpCommandInstanceBlock).Command;
-                            (command as JumpCommand).JumpPosition = consideringJumpIndex;
+                            (command as JumpCommand).JumpPosition = blocks.ToList().IndexOf(commandBlock);
                             break;
                         }
                     }
