@@ -3,7 +3,7 @@
 namespace Assets.Scripts.Parts.Weapons
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Tank Parts/Weapon")]
-    public class Weapon : ScriptableObject
+    public class Weapon : TankPart
     {
         public int Damage;
         public float ReloadTime;
