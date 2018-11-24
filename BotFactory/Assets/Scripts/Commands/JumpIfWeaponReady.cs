@@ -10,26 +10,16 @@ namespace Assets.Scripts.Commands
     [Description("Redirect program flow to specific command number if weapon is ready to fire")]
     class JumpIfWeaponReady : JumpCommand
     {
-        public override CommandError Execute(Tank tank)
+        protected override bool DirectConditionCheck(Tank tank)
         {
-            var shouldJump = false;
-
             if (tank.IsReadyToFire)
             {
-                shouldJump = true;
+                return true;
             }
-
-            if (Negate)
+            else
             {
-                shouldJump = !shouldJump;
+                return false;
             }
-
-            if(shouldJump)
-            {
-                new Jump() { JumpPosition = this.JumpPosition }.Execute(tank);
-            }
-            
-            return null;
         }
     }
 }

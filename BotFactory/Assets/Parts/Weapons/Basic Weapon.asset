@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 15
   ReloadTime: 1
-  BulletSpeed: 15
+  BulletSpeed: 30
   Range: 75
   Bullet: {fileID: 1412142431961536, guid: 71b4f99e8b82f1b4f994f0170e829f20, type: 2}

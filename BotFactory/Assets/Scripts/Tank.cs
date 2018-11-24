@@ -60,16 +60,10 @@ namespace Assets.Scripts
         void Start()
         {
             //-----TESTS-----
-            //List<Command> testProgram = new List<Command>();
-            //testProgram.Add(new ClearMemory());
-            //testProgram.Add(new FindNearestEnemy() { MemoryIndex = 0 });
-            //testProgram.Add(new TurnWeaponToPosition() { MemoryIndex = 0 });
-            //testProgram.Add(new JumpIfAimingEnemy() { JumpPosition = 5 });
-            //testProgram.Add(new Jump() { JumpPosition = 0 });
-            //testProgram.Add(new JumpIfWeaponReady() { JumpPosition = 7 });
-            //testProgram.Add(new Jump() { JumpPosition = 0 });
-            //testProgram.Add(new Fire());
-            //ProgramController.RegisterProgram("Player1", testProgram);
+            List<Command> testProgram = new List<Command>();
+            testProgram.Add(new AccelerateForward());
+            testProgram.Add(new TurnLeft());
+            ProgramController.RegisterProgram("Player2", testProgram);
             //this.ProgramIndex = 1;
             //-----TESTS-----
 

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Commands
     [Description("Redirect program flow to specific command number, if your weapon is aiming enemy")]
     class JumpIfAimingEnemy : JumpCommand
     {
-        public override CommandError Execute(Tank tank)
+        protected override bool DirectConditionCheck(Tank tank)
         {
             bool shouldJump = false;
 
@@ -26,17 +26,7 @@ namespace Assets.Scripts.Commands
                 }
             }
 
-            if (Negate)
-            {
-                shouldJump = !shouldJump;
-            }
-
-            if (shouldJump)
-            {
-                return new Jump() { JumpPosition = this.JumpPosition }.Execute(tank);
-            }           
-
-            return null;
+            return shouldJump;
         }
     }
 }

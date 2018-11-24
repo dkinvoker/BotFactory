@@ -18,5 +18,29 @@ namespace Assets.Scripts.Commands
                 return CommandType.Jump;
             }
         }
+
+        public sealed override CommandError Execute(Tank tank)
+        {
+            if (CheckCondition(tank))
+            {
+                tank.ProgramController.ProgramCounter = this.JumpPosition - 1;
+            }
+            return null;
+        }
+
+        protected abstract bool DirectConditionCheck(Tank tank);
+
+        private bool CheckCondition(Tank tank)
+        {
+            if (Negate)
+            {
+                return !DirectConditionCheck(tank);
+            }
+            else
+            {
+                return DirectConditionCheck(tank);
+            }
+        }
+
     }
 }
