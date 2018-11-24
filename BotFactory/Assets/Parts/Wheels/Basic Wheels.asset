@@ -11,7 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22c2f0844befed4aae1c57731a1d92a, type: 3}
   m_Name: Basic Wheels
   m_EditorClassIdentifier: 
+  Cost: 0
+  ConstructionTime: 0
   Acceleration: 10
   MaxSpeed: 15
   TurningSpeed: 0.7
   HP: 100
+  Audio: {fileID: 8300000, guid: 95d9cc41a5d5b7a4da0d3e23bef6fe23, type: 3}

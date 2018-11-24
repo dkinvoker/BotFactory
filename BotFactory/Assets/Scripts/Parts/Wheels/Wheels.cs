@@ -10,7 +10,7 @@ namespace Assets.Scripts.Parts.Wheels
         public float TurningSpeed;
         public int HP;
 
-        public AudioClip audio;
+        public AudioClip Audio;
     }
 }
 

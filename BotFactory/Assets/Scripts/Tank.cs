@@ -23,6 +23,8 @@ namespace Assets.Scripts
         public bool IsLocked { get; set; } = false;
         public int ProgramIndex = 0;
         public float RemainingReloadTime { get; set; } = -1.0f;
+        public AudioSource AudioSource;
+        public Rigidbody Rigidbody;
         #endregion
 
         #region Private Variables  
@@ -67,6 +69,8 @@ namespace Assets.Scripts
             //this.ProgramIndex = 1;
             //-----TESTS-----
 
+            this.AudioSource.clip = Wheels.Audio;
+            this.AudioSource.Play();
             HP = Wheels.HP;
             FirePoint = this.GetComponentsInChildren<Transform>()[2].GetComponentsInChildren<Transform>()[1];
             ProgramController.SetToTankProgram(this);
@@ -99,6 +103,13 @@ namespace Assets.Scripts
             {
                 Destroy(this.gameObject);
             }
+
+            AdjustVolume();
+        }
+
+        private void AdjustVolume()
+        {
+            this.AudioSource.volume = Rigidbody.velocity.magnitude / Wheels.MaxSpeed;
         }
         #endregion
 

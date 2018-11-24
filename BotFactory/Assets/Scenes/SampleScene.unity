@@ -363,6 +363,14 @@ Prefab:
       propertyPath: m_Name
       value: Tank (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Player
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: Side
+      value: Side2
+      objectReference: {fileID: 0}
     - target: {fileID: 114513926289936410, guid: d5013d7e1153cbc49b0a8613359bf3d9,
         type: 2}
       propertyPath: Player
