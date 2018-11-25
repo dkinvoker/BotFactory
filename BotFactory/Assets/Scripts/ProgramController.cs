@@ -7,28 +7,16 @@ namespace Assets.Scripts
 {
     public class ProgramController
     {
-        public static Dictionary<string, List<List<Command>>> Programs { get; private set; }
-
         public int ProgramCounter { get; set; }
 
         private string _player { get; set; } = string.Empty;
         private int _programIndex = -1;
+        private List<Command> _program;
 
-        private List<Command> CurrnetProgram
-        {
-            get
-            {
-                return Programs[_player][_programIndex];
-            }
-        }
 
-        static ProgramController()
+        public ProgramController(string player, int index)
         {
-            Programs = new Dictionary<string, List<List<Command>>>();
-        }
-
-        public ProgramController()
-        {
+            _program = PlayersManager.GetPlayerByName(player).Programs[index];
             ProgramCounter = 0;
         }
 
@@ -36,16 +24,16 @@ namespace Assets.Scripts
         {
             get
             {
-                return CurrnetProgram.Count - 1;
+                return _program.Count - 1;
             }
         }
 
         private CommandError RunCurrentCommand(Tank tank)
         {
-            var returner = CurrnetProgram[ProgramCounter].Execute(tank);
+            var returner = _program[ProgramCounter].Execute(tank);
             if (returner == null)
             {
-                if (ProgramCounter == CurrnetProgram.Count - 1)
+                if (ProgramCounter == _program.Count - 1)
                 {
                     ProgramCounter = 0;
                 }
@@ -60,7 +48,7 @@ namespace Assets.Scripts
 
         private CommandType GetCurrentCommandType()
         {
-            return CurrnetProgram[ProgramCounter].Type;
+            return _program[ProgramCounter].Type;
         }
 
         public CommandError ExecuteCommandPacket(Tank tank)
@@ -80,19 +68,5 @@ namespace Assets.Scripts
             return commandError;
         }
 
-        public static void RegisterProgram(string player, List<Command> program)
-        {
-            if (!Programs.ContainsKey(player))
-            {
-                Programs.Add(player, new List<List<Command>>());
-            }
-            Programs[player].Add(program);
-        }
-
-        public void SetToTankProgram(Tank tank)
-        {
-            _player = tank.Player;
-            _programIndex = tank.ProgramIndex;
-        }
     }
 }

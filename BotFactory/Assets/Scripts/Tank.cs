@@ -12,7 +12,7 @@ namespace Assets.Scripts
     public class Tank : MonoBehaviour
     {
         #region Props and publics
-        public ProgramController ProgramController { get; set; } = new ProgramController();
+        public ProgramController ProgramController { get; private set; }
         public Memory Memory;
         public Weapon Weapon;
         public Transform FirePoint { get; private set; }
@@ -65,15 +65,15 @@ namespace Assets.Scripts
             List<Command> testProgram = new List<Command>();
             testProgram.Add(new AccelerateForward());
             testProgram.Add(new TurnLeft());
-            ProgramController.RegisterProgram("Player2", testProgram);
+            PlayersManager.GetPlayerByName("Player2").RegisterProgram(testProgram);
             //this.ProgramIndex = 1;
             //-----TESTS-----
 
+            ProgramController = new ProgramController(this.Player, 0);
             this.AudioSource.clip = Wheels.Audio;
             this.AudioSource.Play();
             HP = Wheels.HP;
             FirePoint = this.GetComponentsInChildren<Transform>()[2].GetComponentsInChildren<Transform>()[1];
-            ProgramController.SetToTankProgram(this);
         }
 
         // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona

@@ -86,7 +86,7 @@ namespace Assets.Scripts
             }
 
             var program = blocks.Select(u => u.Command).ToList();
-            ProgramController.RegisterProgram(player, program);
+            PlayersManager.GetPlayerByName(player).RegisterProgram(program);
         }
 
     }

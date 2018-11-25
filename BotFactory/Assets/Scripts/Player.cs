@@ -14,7 +14,12 @@ namespace Assets.Scripts
 
         public int Resources { get; set; }
 
-        public List<List<Command>> Programs { get; set; }
+        public List<List<Command>> Programs { get; private set; } = new List<List<Command>>();
+
+        public void RegisterProgram(List<Command> program)
+        {
+            Programs.Add(program);
+        }
 
     }
 }
