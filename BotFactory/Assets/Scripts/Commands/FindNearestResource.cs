@@ -1,15 +1,17 @@
-﻿using Assets.Scripts.Variables;
+﻿using Assets.Scripts.Resources;
+using Assets.Scripts.Variables;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Stores location of nearest enemy in specified memory cell. If there is no enemies, stores null")]
-    class FindNearestEnemy : MemoryCommand
+    [Description("Stores location of nearest resource in specified memory cell. If there is no resources, stores null")]
+    class FindNearestResource : MemoryCommand
     {
         public override CommandType Type
         {
@@ -21,11 +23,10 @@ namespace Assets.Scripts.Commands
 
         public override CommandError Execute(Tank tank)
         {
-            var tankGameObjects = GameObject.FindGameObjectsWithTag("Tank");
-            var tanks = tankGameObjects.Select(u => u.GetComponent<Tank>());
-            var enemyTanks = tanks.Where(u => u.Side != tank.Side).ToArray();
+            var resourceGameObjects = GameObject.FindGameObjectsWithTag("Resource");
+            var resources = resourceGameObjects.Select(u => u.GetComponent<Resource>()).ToArray();
 
-            if (enemyTanks == null || enemyTanks.Length == 0)
+            if (resources == null || resources.Length == 0)
             {
                 var success = tank.Memory.StoreValue(null, MemoryIndex);
                 if (success)
@@ -39,19 +40,19 @@ namespace Assets.Scripts.Commands
             }
             else
             {
-                var nearestEnemy = enemyTanks[0];
-                float minDistance = Vector3.Distance(nearestEnemy.transform.position, tank.transform.position);
-                foreach (var enemy in enemyTanks)
+                var nearestResource = resources[0];
+                float minDistance = Vector3.Distance(nearestResource.transform.position, tank.transform.position);
+                foreach (var resource in resources)
                 {
-                    float distance = Vector3.Distance(enemy.transform.position, tank.transform.position);
+                    float distance = Vector3.Distance(resource.transform.position, tank.transform.position);
                     if (distance < minDistance)
                     {
                         minDistance = distance;
-                        nearestEnemy = enemy;
+                        nearestResource = resource;
                     }
                 }
 
-                var variable = new Position(nearestEnemy.transform.position);
+                var variable = new Position(nearestResource.transform.position);
                 var success = tank.Memory.StoreValue(variable, MemoryIndex);
                 if (success)
                 {

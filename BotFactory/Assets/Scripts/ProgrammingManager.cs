@@ -19,6 +19,7 @@ namespace Assets.Scripts
             new ClearMemory(),
             new DeleteMemoryAt(),
             new FindNearestEnemy(),
+            new FindNearestResource(),
             new Fire(),
             new Jump(),
             new JumpIfAimingEnemy(),
