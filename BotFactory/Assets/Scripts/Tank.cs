@@ -38,7 +38,7 @@ namespace Assets.Scripts
             this.AudioSource.volume = Rigidbody.velocity.magnitude / Wheels.MaxSpeed;
         }
 
-        public void LoadWeapon(Weapon weapon)
+        public void LoadWeapon()
         {
             var currentWeapon = this.gameObject.FindComponentInChildWithTag<Transform>("Tank Top");
             if (currentWeapon != null)
@@ -47,7 +47,7 @@ namespace Assets.Scripts
             }
 
             var newWeapon = GameObject.Instantiate(this.Weapon.Model, this.transform);
-            newWeapon.transform.position = Weapon.ModelAnchor;
+            newWeapon.transform.Translate(Weapon.ModelAnchor, Space.Self);
             newWeapon.transform.SetSiblingIndex(1);
 
         }

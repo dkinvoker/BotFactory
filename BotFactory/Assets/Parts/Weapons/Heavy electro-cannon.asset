@@ -18,5 +18,5 @@ MonoBehaviour:
   BulletSpeed: 55
   Range: 125
   Bullet: {fileID: 1412142431961536, guid: 71b4f99e8b82f1b4f994f0170e829f20, type: 2}
-  Model: {fileID: 100000, guid: 3ca77599a67fec546bfb1748a95154ae, type: 3}
-  ModelAnchor: {x: 0, y: 2.64, z: 0.94}
+  Model: {fileID: 1400687682047460, guid: 5edc4f35eccc0694690b3586252c54a2, type: 2}
+  ModelAnchor: {x: 0, y: 2.64, z: -0.94}

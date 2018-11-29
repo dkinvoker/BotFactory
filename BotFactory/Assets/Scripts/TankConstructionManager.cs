@@ -45,9 +45,31 @@ namespace Assets.Scripts
             WeaponDropdown.AddOptions(strings);
         }
 
+        private void FillWheelsDropdown()
+        {
+            List<string> strings = new List<string>();
+            foreach (var wheels in Wheels)
+            {
+                strings.Add(wheels.name);
+            }
+            ChassisDropdown.AddOptions(strings);
+        }
+
         private void FillDropdowns()
         {
             FillWeaponsDropdown();
+            FillWheelsDropdown();
+        }
+
+        public void WeaponDropdownValueChange(int index)
+        {
+            Tank.Weapon = this.Weapons[index];
+            Tank.LoadWeapon();
+        }
+
+        public void ChassisDropdownValueChange(int index)
+        {
+            throw new NotImplementedException();
         }
 
     }
