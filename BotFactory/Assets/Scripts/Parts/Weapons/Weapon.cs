@@ -10,6 +10,8 @@ namespace Assets.Scripts.Parts.Weapons
         public float BulletSpeed;
         public float Range;
         public GameObject Bullet;
+        public GameObject Model;
+        public Vector3 ModelAnchor;
 
         public GameObject CreateBulletAtLocation(Vector3 position, Quaternion rotation)
         {

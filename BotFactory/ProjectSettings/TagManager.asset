@@ -10,6 +10,8 @@ TagManager:
   - Programming Panel
   - Programming Manager
   - Resource
+  - Tank Bot
+  - Tank Top
   layers:
   - Default
   - TransparentFX

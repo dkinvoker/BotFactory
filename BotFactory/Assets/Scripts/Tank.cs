@@ -32,6 +32,25 @@ namespace Assets.Scripts
 
         #region Others
         public bool IsReadyToFire { get { return RemainingReloadTime <= 0; } }
+
+        private void AdjustVolume()
+        {
+            this.AudioSource.volume = Rigidbody.velocity.magnitude / Wheels.MaxSpeed;
+        }
+
+        public void LoadWeapon(Weapon weapon)
+        {
+            var currentWeapon = this.gameObject.FindComponentInChildWithTag<Transform>("Tank Top");
+            if (currentWeapon != null)
+            {
+                Destroy(currentWeapon.gameObject);
+            }
+
+            var newWeapon = GameObject.Instantiate(this.Weapon.Model, this.transform);
+            newWeapon.transform.position = Weapon.ModelAnchor;
+            newWeapon.transform.SetSiblingIndex(1);
+
+        }
         #endregion
 
         #region Tank Reboot
@@ -106,12 +125,7 @@ namespace Assets.Scripts
 
             AdjustVolume();
         }
-
-        private void AdjustVolume()
-        {
-            this.AudioSource.volume = Rigidbody.velocity.magnitude / Wheels.MaxSpeed;
-        }
         #endregion
-
+ 
     }
 }

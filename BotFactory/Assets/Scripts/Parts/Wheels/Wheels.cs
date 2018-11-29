@@ -9,6 +9,7 @@ namespace Assets.Scripts.Parts.Wheels
         public float MaxSpeed;
         public float TurningSpeed;
         public int HP;
+        public GameObject Model;
 
         public AudioClip Audio;
     }
