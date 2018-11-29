@@ -9,6 +9,7 @@ TagManager:
   - Available Commands Area
   - Programming Panel
   - Programming Manager
+  - Resource
   layers:
   - Default
   - TransparentFX
