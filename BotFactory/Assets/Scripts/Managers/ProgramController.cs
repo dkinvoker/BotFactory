@@ -3,7 +3,7 @@ using Assets.Scripts.Commands;
 using System;
 using System.Collections.Generic;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Managers
 {
     public class ProgramController
     {

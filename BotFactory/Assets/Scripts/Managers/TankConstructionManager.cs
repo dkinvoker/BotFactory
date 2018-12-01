@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Managers
 {
     class TankConstructionManager : MonoBehaviour
     {
