@@ -49,7 +49,11 @@ namespace Assets.Scripts
             var newWeapon = GameObject.Instantiate(this.Weapon.Model, this.transform);
             newWeapon.transform.Translate(Weapon.ModelAnchor, Space.Self);
             newWeapon.transform.SetSiblingIndex(1);
+        }
 
+        private void RegisterReference()
+        {
+            PlayersManager.GetPlayerByName(this.Player).RegisterTank(this);
         }
         #endregion
 
@@ -80,6 +84,13 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
+            RegisterReference();          
+            ProgramController = new ProgramController(this.Player, 0);
+            this.AudioSource.clip = Wheels.Audio;
+            this.AudioSource.Play();
+            HP = Wheels.HP;
+            FirePoint = this.GetComponentsInChildren<Transform>()[2].GetComponentsInChildren<Transform>()[1];
+
             //-----TESTS-----
             List<Command> testProgram = new List<Command>();
             testProgram.Add(new ClearMemory());
@@ -91,12 +102,6 @@ namespace Assets.Scripts
             PlayersManager.GetPlayerByName("Player2").RegisterProgram(testProgram);
             //this.ProgramIndex = 1;
             //-----TESTS-----
-
-            ProgramController = new ProgramController(this.Player, 0);
-            this.AudioSource.clip = Wheels.Audio;
-            this.AudioSource.Play();
-            HP = Wheels.HP;
-            FirePoint = this.GetComponentsInChildren<Transform>()[2].GetComponentsInChildren<Transform>()[1];
         }
 
         // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
@@ -129,7 +134,13 @@ namespace Assets.Scripts
 
             AdjustVolume();
         }
+
+        private void OnDestroy()
+        {
+            PlayersManager.GetPlayerByName(this.Player).UnregisterTank(this);
+        }
+
         #endregion
- 
+
     }
 }

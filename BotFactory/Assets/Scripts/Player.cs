@@ -17,14 +17,16 @@ namespace Assets.Scripts
 
         public List<List<Command>> Programs { get; private set; } = new List<List<Command>>();
 
-        public List<GameObject> TanksBlueprints { get; private set; } = new List<GameObject>(); 
+        public List<GameObject> TanksBlueprints { get; private set; } = new List<GameObject>();
+
+        public List<Tank> Tanks { get; private set; } = new List<Tank>();
 
         public void RegisterProgram(List<Command> program)
         {
             Programs.Add(program);
         }
 
-        public void RegisterTank(GameObject tank)
+        public void RegisterTankBlueprint(GameObject tank)
         {
             var tankComponent = tank.GetComponent<Tank>();
             if (tankComponent.Player != PlayerName)
@@ -32,6 +34,16 @@ namespace Assets.Scripts
                 throw new Exception("Blueprints player name do not match players name");
             }
             TanksBlueprints.Add(tank);
+        }
+
+        public void RegisterTank(Tank tank)
+        {
+            Tanks.Add(tank);
+        }
+
+        public void UnregisterTank(Tank tank)
+        {
+            Tanks.Remove(tank);
         }
     }
 }
