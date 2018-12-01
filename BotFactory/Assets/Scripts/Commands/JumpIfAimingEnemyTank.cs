@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Scripts.Commands
 {
     [Description("Redirect program flow to specific command number, if your weapon is aiming enemy")]
-    class JumpIfAimingEnemy : JumpCommand
+    class JumpIfAimingEnemyTank : JumpCommand
     {
         protected override bool DirectConditionCheck(Tank tank)
         {
