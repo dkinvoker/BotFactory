@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Bases
 {
-    public class Factory : MonoBehaviour
+    public class Unit : MonoBehaviour
     {
-        public int HP { get; set; } = 1000;
+        public int HP { get; set; }
+        public string Player;
     }
 }

@@ -21,6 +21,8 @@ namespace Assets.Scripts
 
         public List<Tank> Tanks { get; private set; } = new List<Tank>();
 
+        public Factory Factory { get; private set; }
+
         public void RegisterProgram(List<Command> program)
         {
             Programs.Add(program);
@@ -44,6 +46,15 @@ namespace Assets.Scripts
         public void UnregisterTank(Tank tank)
         {
             Tanks.Remove(tank);
+        }
+
+        public void RegisterFactory(Factory factory)
+        {
+            if (this.Factory != null)
+            {
+                throw new Exception($"Player {this.PlayerName} already haves an factory registered");
+            }
+            this.Factory = factory;
         }
     }
 }
