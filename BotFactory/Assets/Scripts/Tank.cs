@@ -82,8 +82,12 @@ namespace Assets.Scripts
         {
             //-----TESTS-----
             List<Command> testProgram = new List<Command>();
-            testProgram.Add(new AccelerateForward());
-            testProgram.Add(new TurnLeft());
+            testProgram.Add(new ClearMemory());
+            testProgram.Add(new FindNearestEnemy() { MemoryIndex = 0 });
+            testProgram.Add(new TurnWeaponToPosition() { MemoryIndex = 0 });
+            testProgram.Add(new JumpIfAimingEnemy() { Negate = true, JumpPosition = 0 });
+            testProgram.Add(new JumpIfWeaponReady() { Negate = true, JumpPosition = 0 });
+            testProgram.Add(new Fire());
             PlayersManager.GetPlayerByName("Player2").RegisterProgram(testProgram);
             //this.ProgramIndex = 1;
             //-----TESTS-----

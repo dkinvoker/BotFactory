@@ -20,9 +20,13 @@ namespace Assets.Scripts.Commands
             if (reycastedObjects.Length > 0)
             {
                 var firstHitObject = reycastedObjects[0];
-                if (firstHitObject.transform.gameObject.GetComponent<Tank>() != null)
+                var scriptComponent = firstHitObject.transform.gameObject.GetComponent<Tank>();
+                if (scriptComponent != null)
                 {
-                    shouldJump = true;
+                    if (scriptComponent.Side != tank.Side)
+                    {
+                        shouldJump = true;
+                    }
                 }
             }
 
