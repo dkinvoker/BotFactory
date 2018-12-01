@@ -48,7 +48,7 @@ namespace Assets.Scripts
         public void ChangeScene()
         {
             SaveProgram("Player1");
-            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("Game Scene", LoadSceneMode.Single);
         }
 
         private void SaveProgram(string player)

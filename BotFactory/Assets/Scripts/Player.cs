@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -16,10 +17,21 @@ namespace Assets.Scripts
 
         public List<List<Command>> Programs { get; private set; } = new List<List<Command>>();
 
+        public List<GameObject> TanksBlueprints { get; private set; } = new List<GameObject>(); 
+
         public void RegisterProgram(List<Command> program)
         {
             Programs.Add(program);
         }
 
+        public void RegisterTank(GameObject tank)
+        {
+            var tankComponent = tank.GetComponent<Tank>();
+            if (tankComponent.Player != PlayerName)
+            {
+                throw new Exception("Blueprints player name do not match players name");
+            }
+            TanksBlueprints.Add(tank);
+        }
     }
 }

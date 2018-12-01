@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -70,6 +71,20 @@ namespace Assets.Scripts
         public void ChassisDropdownValueChange(int index)
         {
             throw new NotImplementedException();
+        }
+
+        public void ChangeScene()
+        {
+            var tankObject = GameObject.FindGameObjectWithTag("Tank");
+            tankObject.SetActive(false);
+            DontDestroyOnLoad(tankObject);
+
+            var tankScript = tankObject.GetComponent<Tank>();
+            tankScript.Player = "Player1";
+            tankScript.Side = "Side1";
+
+            PlayersManager.GetPlayerByName("Player1").RegisterTank(tankObject);
+            SceneManager.LoadScene("Program Develop Scene", LoadSceneMode.Single);
         }
 
     }

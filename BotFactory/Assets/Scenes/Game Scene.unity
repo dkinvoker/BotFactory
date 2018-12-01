@@ -837,6 +837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1143193651}
   - component: {fileID: 1143193650}
+  - component: {fileID: 1143193652}
   m_Layer: 0
   m_Name: GamaManager
   m_TagString: Untagged
@@ -868,6 +869,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1143193652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143193649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 195a028d7de4c344db2a93cdc007cfec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1331640779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Memory: {fileID: 11400000, guid: cd7b33a8e72d16b428b19dd0d15dc435, type: 2}
-  Weapon: {fileID: 11400000, guid: 403109c4adc0b634788de483c8758129, type: 2}
+  Weapon: {fileID: 11400000, guid: e5592c9091936e7459ef218cb4e2fa64, type: 2}
   Wheels: {fileID: 11400000, guid: 43d40d5613516ef4d8198f3067640e98, type: 2}
   Player: Player2
   Side: Side2
