@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts
 {
     class CameraController : MonoBehaviour
     {

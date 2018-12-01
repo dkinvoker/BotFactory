@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {

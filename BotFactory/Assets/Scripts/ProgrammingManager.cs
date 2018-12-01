@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts
 {
     class ProgrammingManager : MonoBehaviour
     {

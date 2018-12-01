@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts.Managers
+namespace Assets.Scripts
 {
     public class PlayersManager : MonoBehaviour
     {
