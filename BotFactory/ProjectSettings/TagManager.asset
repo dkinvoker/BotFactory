@@ -12,6 +12,8 @@ TagManager:
   - Resource
   - Tank Bot
   - Tank Top
+  - Structure
+  - Factory
   layers:
   - Default
   - TransparentFX

@@ -11,5 +11,21 @@ namespace Assets.Scripts.Bases
     {
         public int HP { get; set; }
         public string Player;
+
+        public string Side
+        {
+            get
+            {
+                return PlayersManager.GetPlayerByName(this.Player).SideName;
+            }
+        }
+
+        protected void CheckHP()
+        {
+            if (HP <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

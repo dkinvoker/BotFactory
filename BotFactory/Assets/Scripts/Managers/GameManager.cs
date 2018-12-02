@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
+        public Text NotifyTextBox;
+
         public static void SpawnTankAtLocation(GameObject blueprint, Vector3 location)
         {
             var copy = GameObject.Instantiate(blueprint);
@@ -21,6 +24,11 @@ namespace Assets.Scripts
         {
             var playersTank = PlayersManager.GetPlayerByName("Player1").TanksBlueprints[0];
             SpawnTankAtLocation(playersTank, new Vector3(0, 0, 0));
+        }
+
+        public void OrderFactoryBuildingTank(int index)
+        {
+            PlayersManager.GetPlayerByName("Player1").Factory.ConstructTank(index);
         }
     }
 }

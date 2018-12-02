@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Bases;
 using Assets.Scripts.Commands;
 using Assets.Scripts.Parts.Memory;
 using Assets.Scripts.Parts.Weapons;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class Tank : MonoBehaviour
+    public class Tank : Unit
     {
         #region Props and publics
         public ProgramController ProgramController { get; private set; }
@@ -17,9 +18,6 @@ namespace Assets.Scripts
         public Weapon Weapon;
         public Transform FirePoint { get; private set; }
         public Wheels Wheels;
-        public int HP { get; set; }
-        public string Player;
-        public string Side;
         public bool IsLocked { get; set; } = false;
         public int ProgramIndex = 0;
         public float RemainingReloadTime { get; set; } = -1.0f;
@@ -55,6 +53,23 @@ namespace Assets.Scripts
         {
             PlayersManager.GetPlayerByName(this.Player).RegisterTank(this);
         }
+
+        public float CalculateSpawningTime()
+        {
+            var weaponTime = this.Weapon.ConstructionTime;
+            var wheelsTime = this.Wheels.ConstructionTime;
+
+            return weaponTime + wheelsTime;
+        }
+
+        public int CalculateCost()
+        {
+            var weaponCost = this.Weapon.Cost;
+            var wheelsCost = this.Wheels.Cost;
+
+            return weaponCost + wheelsCost;
+        }
+
         #endregion
 
         #region Tank Reboot
@@ -125,12 +140,9 @@ namespace Assets.Scripts
             if (RemainingReloadTime > 0)
             {
                 RemainingReloadTime -= Time.deltaTime;
-            }       
-
-            if (HP <= 0)
-            {
-                Destroy(this.gameObject);
             }
+
+            CheckHP();
 
             AdjustVolume();
         }

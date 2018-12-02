@@ -81,7 +81,6 @@ namespace Assets.Scripts
 
             var tankScript = tankObject.GetComponent<Tank>();
             tankScript.Player = "Player1";
-            tankScript.Side = "Side1";
 
             PlayersManager.GetPlayerByName("Player1").RegisterTankBlueprint(tankObject);
             SceneManager.LoadScene("Program Develop Scene", LoadSceneMode.Single);
