@@ -91,6 +91,7 @@ namespace Assets.Scripts
         private void RaportError(CommandError error)
         {
             string finalMessage = $"Error occurred at {ProgramController.ProgramCounter} : {error.Message}. Rebooting tank";
+            GameManager.Notify(finalMessage);
             Debug.LogError(finalMessage);
         }
         #endregion

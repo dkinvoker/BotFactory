@@ -19,7 +19,7 @@ namespace Assets.Scripts
         {
             if (IsLocked)
             {
-                NotifyToPlayer("Factory Is occupied!");
+                GameManager.Notify("Factory Is occupied!");
             }
             else
             {
@@ -32,7 +32,7 @@ namespace Assets.Scripts
 
                 if (player.Resources < cost)
                 {
-                    NotifyToPlayer("No enough minerals!");
+                    GameManager.Notify("No enough minerals!");
                     return;
                 }
                 else
@@ -49,13 +49,8 @@ namespace Assets.Scripts
             this.IsLocked = true;
             yield return new WaitForSeconds(time);
             this.IsLocked = false;
-            NotifyToPlayer("Tank Constructed!");
+            GameManager.Notify("Tank Constructed!");
             SpawnTank(blueprint.gameObject);
-        }
-
-        private void NotifyToPlayer(string message)
-        {
-            GameObject.FindObjectOfType<GameManager>().NotifyTextBox.text += message + "\n";
         }
 
         private Tank SpawnTank(GameObject blueprint)

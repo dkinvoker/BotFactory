@@ -10,7 +10,7 @@ namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public Text NotifyTextBox;
+        public static Text NotifyTextBox;
 
         public static void SpawnTankAtLocation(GameObject blueprint, Vector3 location)
         {
@@ -20,10 +20,32 @@ namespace Assets.Scripts
             copy.SetActive(true);
         }
 
+        public static void Notify(string message)
+        {
+            NotifyTextBox.text += message + "\n";
+        }
+
         private void Start()
         {
             var playersTank = PlayersManager.GetPlayerByName("Player1").TanksBlueprints[0];
             SpawnTankAtLocation(playersTank, new Vector3(0, 0, 0));
+        }
+
+        private void Update()
+        {
+
+            if (Input.GetKeyDown("1"))
+            {
+                OrderFactoryBuildingTank(0);
+            }
+            if (Input.GetKeyDown("2"))
+            {
+                OrderFactoryBuildingTank(1);
+            }
+            if (Input.GetKeyDown("3"))
+            {
+                OrderFactoryBuildingTank(2);
+            }
         }
 
         public void OrderFactoryBuildingTank(int index)
