@@ -23,6 +23,7 @@ namespace Assets.Scripts
             new Fire(),
             new Jump(),
             new JumpIfAimingEnemyTank(),
+            new JumpIfCloseToColision(),
             new JumpIfFacingEnemyTank(),
             new JumpIfPositionInRange(),
             new JumpIfWeaponReady(),
