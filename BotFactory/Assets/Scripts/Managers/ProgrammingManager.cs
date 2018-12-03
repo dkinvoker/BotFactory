@@ -24,6 +24,7 @@ namespace Assets.Scripts
             new Jump(),
             new JumpIfAimingEnemyTank(),
             new JumpIfFacingEnemyTank(),
+            new JumpIfPositionInRange(),
             new JumpIfWeaponReady(),
             new TurnLeft(),
             new TurnRight(),

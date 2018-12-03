@@ -19,7 +19,7 @@ namespace Assets.Scripts.Commands
             }
         }
 
-        public sealed override CommandError Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             if (CheckCondition(tank))
             {
@@ -30,7 +30,7 @@ namespace Assets.Scripts.Commands
 
         protected abstract bool DirectConditionCheck(Tank tank);
 
-        private bool CheckCondition(Tank tank)
+        protected bool CheckCondition(Tank tank)
         {
             if (Negate)
             {

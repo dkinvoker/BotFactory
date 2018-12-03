@@ -19,6 +19,7 @@ namespace Assets.Scripts.UI
         public GameObject SimpleCommandPrefab;
         public GameObject MemoryCommandPrefab;
         public GameObject JumpCommandPrefab;
+        public GameObject MemoryJumpCommandPrefab;
 
         public GameObject JumpTargetPrefab;
 
@@ -61,6 +62,18 @@ namespace Assets.Scripts.UI
             else if (commandBlock.CommandBlueprint is MemoryCommand)
             {
                 prefabCopy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
+            }
+            else if (commandBlock.CommandBlueprint is MemoryJumpCommand)
+            {
+                prefabCopy = GameObject.Instantiate(MemoryJumpCommandPrefab, this.transform);
+                var targetBlockCopy = GameObject.Instantiate(JumpTargetPrefab, this.transform);
+
+                Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+                prefabCopy.GetComponent<Image>().color = jumpColor;
+                targetBlockCopy.GetComponent<Image>().color = jumpColor;
+
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock = targetBlockCopy;
+                targetBlockCopy.GetComponent<JumpTarget>().JumpParent = prefabCopy;
             }
             else if (commandBlock.CommandBlueprint is JumpCommand)
             {

@@ -10,7 +10,8 @@ namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public static Text NotifyTextBox;
+        public Text NotifyTextBox;
+        public string MainPlayerName = "Player1";
 
         public static void SpawnTankAtLocation(GameObject blueprint, Vector3 location)
         {
@@ -20,9 +21,12 @@ namespace Assets.Scripts
             copy.SetActive(true);
         }
 
-        public static void Notify(string message)
+        public void Notify(string message, string playerName)
         {
-            NotifyTextBox.text += message + "\n";
+            if (playerName == MainPlayerName)
+            {
+                NotifyTextBox.text += message + "\n";
+            } 
         }
 
         private void Start()

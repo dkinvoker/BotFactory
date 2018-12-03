@@ -91,7 +91,7 @@ namespace Assets.Scripts
         private void RaportError(CommandError error)
         {
             string finalMessage = $"Error occurred at {ProgramController.ProgramCounter} : {error.Message}. Rebooting tank";
-            GameManager.Notify(finalMessage);
+            GameObject.FindObjectOfType<GameManager>().Notify(finalMessage, this.Player);
             Debug.LogError(finalMessage);
         }
         #endregion
@@ -112,6 +112,7 @@ namespace Assets.Scripts
             testProgram.Add(new ClearMemory());
             testProgram.Add(new FindNearestEnemyTank() { MemoryIndex = 0 });
             testProgram.Add(new TurnWeaponToPosition() { MemoryIndex = 0 });
+            testProgram.Add(new JumpIfPositionInRange() { Negate = true, JumpPosition = 0, MemoryIndex = 0 });
             testProgram.Add(new JumpIfAimingEnemyTank() { Negate = true, JumpPosition = 0 });
             testProgram.Add(new JumpIfWeaponReady() { Negate = true, JumpPosition = 0 });
             testProgram.Add(new Fire());
