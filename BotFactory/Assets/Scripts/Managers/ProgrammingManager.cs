@@ -16,6 +16,7 @@ namespace Assets.Scripts
         private readonly Command[] _allCommands = 
         {
             new AccelerateForward(),
+            new Break(),
             new ClearMemory(),
             new DeleteMemoryAt(),
             new FindNearestEnemyTank(),
@@ -27,6 +28,7 @@ namespace Assets.Scripts
             new JumpIfFacingEnemyTank(),
             new JumpIfPositionInRange(),
             new JumpIfWeaponReady(),
+            new StoreValue(),
             new TurnLeft(),
             new TurnRight(),
             new TurnToPosition(),
@@ -50,7 +52,7 @@ namespace Assets.Scripts
         public void ChangeScene()
         {
             SaveProgram("Player1");
-            SceneManager.LoadScene("Game Scene", LoadSceneMode.Single);
+            SceneManager.LoadScene("Lvl 1", LoadSceneMode.Single);
         }
 
         private void SaveProgram(string player)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,20 +8,26 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
+    [Description("Jumps to specyfic program location if tank is facing object in close distance")]
     class JumpIfCloseToColision : JumpCommand
     {
         protected override bool DirectConditionCheck(Tank tank)
         {
-            bool shouldJump = false;
-            const float maxDistance = 0.5f;
+            const float maxDistance = 20f;
+
+            //---
+            Debug.DrawRay(tank.transform.position + new Vector3(0, 0.2f, 0), tank.transform.forward, Color.green, 20, true);
+            //---
 
             var raycastHit = Physics.Raycast(tank.transform.position + new Vector3(0, 0.2f, 0), tank.transform.forward, maxDistance);
             if (raycastHit)
             {
-                shouldJump = true;
+                return true;
             }
-
-            return shouldJump;
+            else
+            {
+                return false;
+            }
         }
     }
 }
