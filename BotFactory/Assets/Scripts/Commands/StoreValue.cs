@@ -17,6 +17,14 @@ namespace Assets.Scripts.Commands
             }
         }
 
+        public override string Description
+        {
+            get
+            {
+                return "Stores value in specyfic data cell";
+            }
+        }
+
         public override CommandError Execute(Tank tank)
         {
             var memoryData = tank.Memory[MemoryIndex];

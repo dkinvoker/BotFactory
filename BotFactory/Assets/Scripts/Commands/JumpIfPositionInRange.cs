@@ -9,9 +9,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Jumps to certain location if specific position stored in specyfic memory location is in weapon range")]
     class JumpIfPositionInRange : MemoryJumpCommand
     {
+        public override string Description
+        {
+            get
+            {
+                return "Jumps to certain location if specific position stored in specyfic memory location is in weapon range";
+            }
+        }
+
         protected override bool DirectConditionCheck(Tank tank)
         {
             var memoryData = (tank.Memory[MemoryIndex] as Position).Value;

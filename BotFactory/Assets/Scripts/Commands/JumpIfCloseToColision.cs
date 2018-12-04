@@ -8,9 +8,16 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Jumps to specyfic program location if tank is facing object in close distance")]
     class JumpIfCloseToColision : JumpCommand
     {
+        public override string Description
+        {
+            get
+            {
+                return "Jumps to specyfic program location if tank is facing object in close distance";
+            }
+        }
+
         protected override bool DirectConditionCheck(Tank tank)
         {
             const float maxDistance = 20f;

@@ -9,14 +9,9 @@ namespace Assets.Scripts.Commands
 
         public abstract CommandError Execute(Tank tank);
 
-        public string Description
+        public abstract string Description
         {
-            get
-            {
-                var type = this.GetType();
-                var atributes = type.GetCustomAttributes(typeof(DescriptionAttribute), false);
-                return (atributes[0] as DescriptionAttribute).Description;
-            }
+            get;
         }
 
         public Command Copy()

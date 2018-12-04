@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Turns weapon right")]
     class TurnWeaponRight : SimpleCommand
     {
         public override CommandType Type
@@ -16,6 +15,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.WeaponRotation;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Turns weapon right";
             }
         }
 

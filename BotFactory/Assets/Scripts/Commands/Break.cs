@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Breaks the tank!")]
     class Break : SimpleCommand
     {
         public override CommandType Type
@@ -16,6 +15,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.Move;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Breaks the tank!";
             }
         }
 

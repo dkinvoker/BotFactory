@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Fires! If weapon is not ready using this command will trigger an error")]
     class Fire : SimpleCommand
     {
         public override CommandType Type
@@ -16,6 +15,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.Fire;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Fires! If weapon is not ready using this command will trigger an error";
             }
         }
 

@@ -7,9 +7,16 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Redirect program flow to specific command number if weapon is ready to fire")]
     class JumpIfWeaponReady : JumpCommand
     {
+        public override string Description
+        {
+            get
+            {
+                return "Redirect program flow to specific command number if weapon is ready to fire";
+            }
+        }
+
         protected override bool DirectConditionCheck(Tank tank)
         {
             if (tank.IsReadyToFire)

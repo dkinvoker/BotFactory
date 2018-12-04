@@ -17,6 +17,14 @@ namespace Assets.Scripts.Commands
             }
         }
 
+        public override string Description
+        {
+            get
+            {
+                return "Adds value of tank turning speed to specyfic memory cell";
+            }
+        }
+
         public override CommandError Execute(Tank tank)
         {
             var memoryData = tank.Memory[MemoryIndex];

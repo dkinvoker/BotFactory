@@ -10,7 +10,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Stores location of nearest resource in specified memory cell. If there is no resources, stores null")]
     class FindNearestResource : MemoryCommand
     {
         public override CommandType Type
@@ -18,6 +17,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.Detect;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Stores location of nearest resource in specified memory cell. If there is no resources, stores null";
             }
         }
 

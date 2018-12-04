@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Clears memory at specified location")]
     class DeleteMemoryAt : MemoryCommand
     {
         public override CommandType Type
@@ -15,6 +14,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.PureMemory;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Clears memory at specified location";
             }
         }
 

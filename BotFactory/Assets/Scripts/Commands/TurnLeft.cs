@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Turns the tank left")]
     class TurnLeft : SimpleCommand
     {
         public TurnLeft()
@@ -19,6 +18,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.Rotation;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Turns the tank left";
             }
         }
 

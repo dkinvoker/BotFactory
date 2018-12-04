@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Stores location of nearest enemy in specified memory cell. If there is no enemies, stores null")]
     class FindNearestEnemyTank : MemoryCommand
     {
         public override CommandType Type
@@ -16,6 +15,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.Detect;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Stores location of nearest enemy in specified memory cell. If there is no enemies, stores null";
             }
         }
 
