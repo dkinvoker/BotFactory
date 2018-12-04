@@ -16,6 +16,7 @@ namespace Assets.Scripts
         private readonly Command[] _allCommands = 
         {
             new AccelerateForward(),
+            new AddTurningSpeed(),
             new Break(),
             new ClearMemory(),
             new DeleteMemoryAt(),
@@ -28,7 +29,7 @@ namespace Assets.Scripts
             new JumpIfFacingEnemyTank(),
             new JumpIfPositionInRange(),
             new JumpIfWeaponReady(),
-            new StoreValue(),
+            //new StoreValue(),
             new TurnLeft(),
             new TurnRight(),
             new TurnToPosition(),
