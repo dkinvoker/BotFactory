@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands
 {
-    abstract class ArithmeticalMemoryCommand : MemoryCommand
+    abstract class ArgumentMemoryCommand : MemoryCommand
     {
         public float Argument { get; set; }
     }

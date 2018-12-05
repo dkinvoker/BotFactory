@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands
 {
-    class StoreValue : ArithmeticalMemoryCommand
+    class StoreValue : ArgumentMemoryCommand
     {
         public override CommandType Type
         {

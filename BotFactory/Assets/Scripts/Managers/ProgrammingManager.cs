@@ -13,7 +13,7 @@ namespace Assets.Scripts
     class ProgrammingManager : MonoBehaviour
     {
         public GameObject CommandPrefab;
-        private readonly Command[] _allCommands = 
+        private readonly Command[] _allCommands =
         {
             new AccelerateForward(),
             new AddTurningSpeed(),
@@ -29,7 +29,8 @@ namespace Assets.Scripts
             new JumpIfFacingEnemyTank(),
             new JumpIfPositionInRange(),
             new JumpIfWeaponReady(),
-            //new StoreValue(),
+            new Store0(),
+            new StoreValue(),
             new TurnLeft(),
             new TurnRight(),
             new TurnToPosition(),

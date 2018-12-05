@@ -20,6 +20,7 @@ namespace Assets.Scripts.UI
         public GameObject MemoryCommandPrefab;
         public GameObject JumpCommandPrefab;
         public GameObject MemoryJumpCommandPrefab;
+        public GameObject ArgumentMemoryCommand;
 
         public GameObject JumpTargetPrefab;
 
@@ -58,6 +59,10 @@ namespace Assets.Scripts.UI
             if (commandBlock.CommandBlueprint is SimpleCommand)
             {
                 prefabCopy = GameObject.Instantiate(SimpleCommandPrefab, this.transform);
+            }
+            else if (commandBlock.CommandBlueprint is ArgumentMemoryCommand)
+            {
+                prefabCopy = GameObject.Instantiate(ArgumentMemoryCommand, this.transform);
             }
             else if (commandBlock.CommandBlueprint is MemoryCommand)
             {
