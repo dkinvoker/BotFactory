@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Scripts.Commands
+namespace Assets.Scripts.Commands.Bases
 {
     abstract class MemoryCommand : Command
     {

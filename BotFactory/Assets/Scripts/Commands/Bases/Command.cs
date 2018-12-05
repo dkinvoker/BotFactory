@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using UnityEngine;
 
-namespace Assets.Scripts.Commands
+namespace Assets.Scripts.Commands.Bases
 {
     public abstract class Command
     {
