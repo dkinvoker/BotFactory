@@ -771,7 +771,9 @@ MonoBehaviour:
     type: 2}
   MemoryJumpCommandPrefab: {fileID: 1182272718581524, guid: 66e1c2693e008194d8e2b0b9e984a4f6,
     type: 2}
-  ArgumentMemoryCommand: {fileID: 1647484537966440, guid: 0d54afb76fbd8544e909be4dfc266896,
+  ArgumentMemoryCommandPrefab: {fileID: 1647484537966440, guid: 0d54afb76fbd8544e909be4dfc266896,
+    type: 2}
+  ArithmeticalComparisonCommandPrefab: {fileID: 1451678325925010, guid: 2f3e880cfb8289c429825648ca2bdbae,
     type: 2}
   JumpTargetPrefab: {fileID: 1602989034676108, guid: 9ab0ce4420fb4c048a29fd42ff38973c,
     type: 2}

@@ -10,6 +10,7 @@ using System.ComponentModel;
 using UnityEngine.UI;
 using static UnityEngine.UI.Dropdown;
 using Assets.Scripts.Commands.Bases;
+using Assets.Scripts.Commands.Unique;
 
 namespace Assets.Scripts.UI
 {
@@ -21,7 +22,8 @@ namespace Assets.Scripts.UI
         public GameObject MemoryCommandPrefab;
         public GameObject JumpCommandPrefab;
         public GameObject MemoryJumpCommandPrefab;
-        public GameObject ArgumentMemoryCommand;
+        public GameObject ArgumentMemoryCommandPrefab;
+        public GameObject ArithmeticalComparisonCommandPrefab;
 
         public GameObject JumpTargetPrefab;
 
@@ -63,35 +65,23 @@ namespace Assets.Scripts.UI
             }
             else if (commandBlock.CommandBlueprint is ArgumentMemoryCommand)
             {
-                prefabCopy = GameObject.Instantiate(ArgumentMemoryCommand, this.transform);
+                prefabCopy = GameObject.Instantiate(ArgumentMemoryCommandPrefab, this.transform);
             }
             else if (commandBlock.CommandBlueprint is MemoryCommand)
             {
                 prefabCopy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
             }
+            else if (commandBlock.CommandBlueprint is ArithmeticalComparison)
+            {
+                CreateJumpCommandInstanceVariationBlock(ArithmeticalComparisonCommandPrefab, out prefabCopy);
+            }
             else if (commandBlock.CommandBlueprint is MemoryJumpCommand)
             {
-                prefabCopy = GameObject.Instantiate(MemoryJumpCommandPrefab, this.transform);
-                var targetBlockCopy = GameObject.Instantiate(JumpTargetPrefab, this.transform);
-
-                Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
-                prefabCopy.GetComponent<Image>().color = jumpColor;
-                targetBlockCopy.GetComponent<Image>().color = jumpColor;
-
-                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock = targetBlockCopy;
-                targetBlockCopy.GetComponent<JumpTarget>().JumpParent = prefabCopy;
+                CreateJumpCommandInstanceVariationBlock(MemoryCommandPrefab, out prefabCopy);
             }
             else if (commandBlock.CommandBlueprint is JumpCommand)
             {
-                prefabCopy = GameObject.Instantiate(JumpCommandPrefab, this.transform);
-                var targetBlockCopy = GameObject.Instantiate(JumpTargetPrefab, this.transform);
-
-                Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
-                prefabCopy.GetComponent<Image>().color = jumpColor;
-                targetBlockCopy.GetComponent<Image>().color = jumpColor;
-
-                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock = targetBlockCopy;
-                targetBlockCopy.GetComponent<JumpTarget>().JumpParent = prefabCopy;
+                CreateJumpCommandInstanceVariationBlock(JumpCommandPrefab, out prefabCopy);
             }
 
             prefabCopy.transform.SetSiblingIndex(DummySlot.Value);
@@ -138,5 +128,17 @@ namespace Assets.Scripts.UI
             _dummy.transform.SetSiblingIndex(DummySlot.Value);
         }
 
+        private void CreateJumpCommandInstanceVariationBlock(GameObject prefab, out GameObject prefabCopyRef)
+        {
+            prefabCopyRef = GameObject.Instantiate(prefab, this.transform);
+            var targetBlockCopy = GameObject.Instantiate(JumpTargetPrefab, this.transform);
+
+            Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+            prefabCopyRef.GetComponent<Image>().color = jumpColor;
+            targetBlockCopy.GetComponent<Image>().color = jumpColor;
+
+            prefabCopyRef.GetComponent<JumpCommandInstanceBlock>().TargetBlock = targetBlockCopy;
+            targetBlockCopy.GetComponent<JumpTarget>().JumpParent = prefabCopyRef;
+        }
     }
 }

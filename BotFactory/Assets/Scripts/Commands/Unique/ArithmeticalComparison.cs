@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands.Unique
 {
-    class ArithmeticalComparison : Command
+    class ArithmeticalComparison : JumpCommand
     {
-        public int JumpIndex { get; set; }
         public int MemoryIndex1 { get; set; }
         public int MemoryIndex2 { get; set; }
         public ComparisonOperator Operator { get; set; }
@@ -36,76 +35,79 @@ namespace Assets.Scripts.Commands.Unique
             var error = Validate(tank);
             if (error == null)
             {
-                var memoryData1 = tank.Memory[MemoryIndex1] as Number;
-                var memoryData2 = tank.Memory[MemoryIndex2] as Number;
-
-                Jump jump = new Jump() { Negate = false, JumpPosition = JumpIndex };
-
-                switch (this.Operator)
-                {
-                    case ComparisonOperator.Equals:
-                        if (memoryData1.Value == memoryData2.Value)
-                        {
-                            return jump.Execute(tank);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    case ComparisonOperator.Greater:
-                        if (memoryData1.Value > memoryData2.Value)
-                        {
-                            return jump.Execute(tank);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    case ComparisonOperator.GreaterOrEquals:
-                        if (memoryData1.Value >= memoryData2.Value)
-                        {
-                            return jump.Execute(tank);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    case ComparisonOperator.Less:
-                        if (memoryData1.Value < memoryData2.Value)
-                        {
-                            return jump.Execute(tank);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    case ComparisonOperator.LessOrEquals:
-                        if (memoryData1.Value <= memoryData2.Value)
-                        {
-                            return jump.Execute(tank);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    case ComparisonOperator.NotEquals:
-                        if (memoryData1.Value != memoryData2.Value)
-                        {
-                            return jump.Execute(tank);
-                        }
-                        else
-                        {
-                            return null;
-                        }
-                    default:
-                        throw new Exception("Default!? HAŁ?");
-                }
+                return base.Execute(tank);
             }
             else
             {
                 return error;
             }
             
+        }
+
+        protected override bool DirectConditionCheck(Tank tank)
+        {
+            var memoryData1 = tank.Memory[MemoryIndex1] as Number;
+            var memoryData2 = tank.Memory[MemoryIndex2] as Number;
+
+            switch (this.Operator)
+            {
+                case ComparisonOperator.Equals:
+                    if (memoryData1.Value == memoryData2.Value)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case ComparisonOperator.Greater:
+                    if (memoryData1.Value > memoryData2.Value)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case ComparisonOperator.GreaterOrEquals:
+                    if (memoryData1.Value >= memoryData2.Value)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case ComparisonOperator.Less:
+                    if (memoryData1.Value < memoryData2.Value)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case ComparisonOperator.LessOrEquals:
+                    if (memoryData1.Value <= memoryData2.Value)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case ComparisonOperator.NotEquals:
+                    if (memoryData1.Value != memoryData2.Value)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
+                    throw new Exception("Default!? HAŁ?");
+            }
         }
 
         private CommandError Validate(Tank tank)
@@ -144,5 +146,6 @@ namespace Assets.Scripts.Commands.Unique
             Less,
             LessOrEquals
         }
+
     }
 }

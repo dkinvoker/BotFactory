@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Commands;
 using Assets.Scripts.Commands.Bases;
+using Assets.Scripts.Commands.Unique;
 using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Assets.Scripts
         {
             new AccelerateForward(),
             new AddTurningSpeed(),
+            new ArithmeticalComparison(),
             new Break(),
             new ClearMemory(),
             new DeleteMemoryAt(),
