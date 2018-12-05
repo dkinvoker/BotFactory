@@ -28,6 +28,7 @@ namespace Assets.Scripts.Commands.Bases
         Fire,
         Detect,
         WeaponRotation,
-        Jump
+        Jump,
+        Comparison
     }
 }
