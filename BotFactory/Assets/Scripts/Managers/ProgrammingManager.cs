@@ -15,6 +15,7 @@ namespace Assets.Scripts
     class ProgrammingManager : MonoBehaviour
     {
         public GameObject CommandPrefab;
+        public GameObject CommandsPanel;
         private readonly Command[] _allCommands =
         {
             new AccelerateForward(),
@@ -46,18 +47,19 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            var panel = GameObject.FindGameObjectWithTag("Available Commands Area");
             foreach (var command in _allCommands)
             {
-                var newCommandBlock = GameObject.Instantiate(CommandPrefab, panel.transform);
+                var newCommandBlock = GameObject.Instantiate(CommandPrefab, CommandsPanel.transform);
                 newCommandBlock.GetComponent<CommandBlock>().CommandBlueprint = command;
             }   
         }
 
-        public void ChangeScene()
+        public void Confirm()
         {
             SaveProgram("Player1");
-            SceneManager.LoadScene("Lvl 1", LoadSceneMode.Single);
+            GameObject.FindObjectOfType<GameManager>().CloseProgramEditor();
+            ReloadScene();
+            PlayersManager.GetPlayerByName("Player1").LoadProgramInAllTanks(0);
         }
 
         private void SaveProgram(string player)
@@ -96,8 +98,12 @@ namespace Assets.Scripts
             }
 
             var program = blocks.Select(u => u.Command).ToList();
-            PlayersManager.GetPlayerByName(player).RegisterProgram(program);
+            PlayersManager.GetPlayerByName(player).SaveProgramAtLocationOrAddAtTheEnd(program, 0);
         }
 
+        private void ReloadScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

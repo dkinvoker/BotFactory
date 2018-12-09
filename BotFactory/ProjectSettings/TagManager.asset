@@ -14,6 +14,9 @@ TagManager:
   - Tank Top
   - Structure
   - Factory
+  - Main Canvas
+  - Programming Canvas
+  - Undescructable
   layers:
   - Default
   - TransparentFX

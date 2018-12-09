@@ -5,11 +5,16 @@ namespace Assets.Scripts
 {
     class CameraController : MonoBehaviour
     {
+        private Vector3 _startingPosition;
+
         public float CameraSpeed = 20f;
         public float MousePixelBorder = 10f;
         public float ScrollSpeed = 10f;
 
-        public float MapSize = 10f;
+        public float MaxX = 10f;
+        public float MinX = 10f;
+        public float MaxZ = 10f;
+        public float MinZ = 10f;
         public float MinY = 3f;
         public float MaxY = 20f;
 
@@ -38,14 +43,19 @@ namespace Assets.Scripts
             float scroll = Input.GetAxis("Mouse ScrollWheel");
             cameraPosition.y -= scroll * 1000 * Time.deltaTime;
 
-            cameraPosition.x = Mathf.Clamp(cameraPosition.x, -MapSize, MapSize);
-            cameraPosition.z = Mathf.Clamp(cameraPosition.z, -MapSize, MapSize);
+            cameraPosition.x = Mathf.Clamp(cameraPosition.x, MinX, MaxX);
+            cameraPosition.z = Mathf.Clamp(cameraPosition.z, MinZ, MaxZ);
 
             cameraPosition.y = Mathf.Clamp(cameraPosition.y, MinY, MaxY);
 
             //Vector 3 is an value type, not reference type, so it have to be set back to transform
             this.transform.position = cameraPosition;
 
+        }
+
+        private void Start()
+        {
+            _startingPosition = this.transform.position;
         }
 
     }

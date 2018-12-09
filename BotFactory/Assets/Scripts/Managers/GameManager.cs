@@ -4,57 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
     public class GameManager : MonoBehaviour
     {
-        public Text NotifyTextBox;
-        public string MainPlayerName = "Player1";
-
-        public static void SpawnTankAtLocation(GameObject blueprint, Vector3 location)
-        {
-            var copy = GameObject.Instantiate(blueprint);
-            copy.transform.position = location;
-            copy.transform.localScale = new Vector3(1, 1, 1);
-            copy.SetActive(true);
-        }
-
-        public void Notify(string message, string playerName)
-        {
-            if (playerName == MainPlayerName)
-            {
-                NotifyTextBox.text += message + "\n";
-            } 
-        }
+        public GameObject MainCanvas;
+        public GameObject ProgrammingCanvas;
 
         private void Start()
         {
-            var playersTank = PlayersManager.GetPlayerByName("Player1").TanksBlueprints[0];
-            SpawnTankAtLocation(playersTank, new Vector3(0, 0, 0));
+            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Undescructable"));
         }
 
-        private void Update()
-        {
+        //public Text NotifyTextBox;
 
-            if (Input.GetKeyDown("1"))
-            {
-                OrderFactoryBuildingTank(0);
-            }
-            if (Input.GetKeyDown("2"))
-            {
-                OrderFactoryBuildingTank(1);
-            }
-            if (Input.GetKeyDown("3"))
-            {
-                OrderFactoryBuildingTank(2);
-            }
+        //public void Notify(string message, string playerName)
+        //{
+        //    if (playerName == MainPlayerName)
+        //    {
+        //        NotifyTextBox.text += message + "\n";
+        //    } 
+        //}
+
+        public void OpenProgramEditor()
+        {
+            MainCanvas.SetActive(false);
+            ProgrammingCanvas.SetActive(true);
         }
 
-        public void OrderFactoryBuildingTank(int index)
+        public void CloseProgramEditor()
         {
-            PlayersManager.GetPlayerByName("Player1").Factory.ConstructTank(index);
+            MainCanvas.SetActive(true);
+            ProgrammingCanvas.SetActive(false);
+        }
+
+        public void LoadLvl(string name)
+        {
+            SceneManager.LoadScene(name, LoadSceneMode.Single);
+            MainCanvas.SetActive(true);
         }
     }
 }

@@ -24,9 +24,21 @@ namespace Assets.Scripts
 
         public Factory Factory { get; private set; }
 
-        public void RegisterProgram(List<Command> program)
+        public void RegisterNewProgram(List<Command> program)
         {
             Programs.Add(program);
+        }
+
+        public void SaveProgramAtLocationOrAddAtTheEnd(List<Command> program, int index)
+        {
+            if (Programs.Count < index + 1)
+            {
+                RegisterNewProgram(program);
+            }
+            else
+            {
+                Programs[index] = program;
+            }
         }
 
         public void RegisterTankBlueprint(GameObject tank)
@@ -56,6 +68,14 @@ namespace Assets.Scripts
                 throw new Exception($"Player {this.PlayerName} already haves an factory registered");
             }
             this.Factory = factory;
+        }
+
+        public void LoadProgramInAllTanks(int index)
+        {
+            foreach (var tank in Tanks)
+            {
+                tank.LoadProgram(index);
+            }
         }
     }
 }
