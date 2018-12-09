@@ -622,7 +622,7 @@ MonoBehaviour:
   ScrollSpeed: 10
   MaxX: 6
   MinX: -215
-  MaxZ: -200
+  MaxZ: -180
   MinZ: -530
   MinY: 3
   MaxY: 150

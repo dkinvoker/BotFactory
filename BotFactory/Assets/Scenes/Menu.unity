@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 489919796}
   - component: {fileID: 489919795}
   m_Layer: 5
-  m_Name: Button
+  m_Name: lvl 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1655192701}
-        m_MethodName: LoadLvl
+        m_MethodName: LoadNewLvl
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -914,6 +914,35 @@ Prefab:
       propertyPath: GameSpeedText
       value: 
       objectReference: {fileID: 215867434}
+    - target: {fileID: 224134777560284478, guid: 69744575b58f96846854c473e17e829b,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -19.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224134777560284478, guid: 69744575b58f96846854c473e17e829b,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -38.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021187749891644, guid: 69744575b58f96846854c473e17e829b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114344690400062934, guid: 69744575b58f96846854c473e17e829b,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.8627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276649160907516, guid: 69744575b58f96846854c473e17e829b,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.8627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114618102159682720, guid: 69744575b58f96846854c473e17e829b,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0.8627451
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69744575b58f96846854c473e17e829b, type: 2}
   m_IsPrefabAsset: 0

@@ -42,8 +42,9 @@ namespace Assets.Scripts
             ProgrammingCanvas.SetActive(false);
         }
 
-        public void LoadLvl(string name)
+        public void LoadNewLvl(string name)
         {
+            ClearAllPlayer1Programs();
             SceneManager.LoadScene(name, LoadSceneMode.Single);
             MainCanvas.SetActive(true);
         }
@@ -52,6 +53,11 @@ namespace Assets.Scripts
         {
             Time.timeScale = newSpeedMultiplayer;
             GameSpeedText.text = newSpeedMultiplayer.ToString("0.00");
+        }
+
+        private void ClearAllPlayer1Programs()
+        {
+            PlayersManager.GetPlayerByName("Player1").Programs.Clear();
         }
     }
 }
