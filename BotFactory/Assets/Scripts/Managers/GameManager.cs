@@ -32,12 +32,14 @@ namespace Assets.Scripts
 
         public void OpenProgramEditor()
         {
+            CameraController.IsLocked = true;
             MainCanvas.SetActive(false);
             ProgrammingCanvas.SetActive(true);
         }
 
         public void CloseProgramEditor()
         {
+            CameraController.IsLocked = false;
             MainCanvas.SetActive(true);
             ProgrammingCanvas.SetActive(false);
         }

@@ -105,6 +105,7 @@ namespace Assets.Scripts
 
         private void ReloadScene()
         {
+            PlayersManager.ClearAllMemories();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

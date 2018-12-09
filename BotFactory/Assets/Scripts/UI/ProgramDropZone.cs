@@ -77,7 +77,7 @@ namespace Assets.Scripts.UI
             }
             else if (commandBlock.CommandBlueprint is MemoryJumpCommand)
             {
-                CreateJumpCommandInstanceVariationBlock(MemoryCommandPrefab, out prefabCopy);
+                CreateJumpCommandInstanceVariationBlock(MemoryJumpCommandPrefab, out prefabCopy);
             }
             else if (commandBlock.CommandBlueprint is JumpCommand)
             {

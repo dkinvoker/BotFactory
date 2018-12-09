@@ -42,6 +42,7 @@ namespace Assets.Scripts.Commands
             {
                 var casting = memoryData as Number;
                 casting += new Number(tank.Wheels.TurningSpeed);
+                tank.Memory.Variables[MemoryIndex] = casting;
                 return null;
             }
         }

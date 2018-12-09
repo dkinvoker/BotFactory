@@ -40,7 +40,8 @@ namespace Assets.Scripts.Commands
             else
             {
                 var number = memoryData as Number;
-                 number += 1;
+                number += 1;
+                tank.Memory.Variables[MemoryIndex] = number;
                 return null;
             }
         }

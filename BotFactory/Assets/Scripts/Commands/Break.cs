@@ -31,7 +31,7 @@ namespace Assets.Scripts.Commands
         {
             var body = tank.GetComponent<Rigidbody>();
 
-            body.velocity = body.velocity / 1.5f;
+            body.velocity = body.velocity / 2f;
 
             return null;
         }

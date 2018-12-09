@@ -41,6 +41,7 @@ namespace Assets.Scripts.Commands
             {
                 var number = memoryData as Number;
                 number -= 1;
+                tank.Memory.Variables[MemoryIndex] = number;
                 return null;
             }
         }
