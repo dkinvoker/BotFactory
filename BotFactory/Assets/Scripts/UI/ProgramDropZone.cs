@@ -87,6 +87,18 @@ namespace Assets.Scripts.UI
             prefabCopy.transform.SetSiblingIndex(DummySlot.Value);
             prefabCopy.GetComponent<CommandInstanceBlock>().Command = commandBlock.CommandBlueprint.Copy();
 
+            //var preferedComponentHeight = prefabCopy.GetComponent<LayoutElement>().preferredHeight;
+            //var componentheight = prefabCopy.GetComponent<RectTransform>().rect.height;
+
+            ////if (componentheight < preferedComponentHeight)
+            //if (true)
+            //{
+            //    var oldHeight = this.transform.parent.GetComponentInParent<RectTransform>().rect.height;
+            //    var width = prefabCopy.GetComponent<RectTransform>().rect.width;
+            //    this.transform.parent.GetComponentInParent<RectTransform>().sizeDelta = new Vector2(width, oldHeight + preferedComponentHeight);
+            //}
+
+
             DestroyDummy();
         }
 
