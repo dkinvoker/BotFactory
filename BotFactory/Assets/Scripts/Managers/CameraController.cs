@@ -25,19 +25,19 @@ namespace Assets.Scripts
 
             if (Input.GetKey("w") || mouse.y >= Screen.height - MousePixelBorder)
             {
-                cameraPosition.z += CameraSpeed * Time.deltaTime;
+                cameraPosition.z += CameraSpeed * Time.deltaTime / Time.timeScale;
             }
             if (Input.GetKey("s") || mouse.y <= MousePixelBorder)
             {
-                cameraPosition.z -= CameraSpeed * Time.deltaTime;
+                cameraPosition.z -= CameraSpeed * Time.deltaTime / Time.timeScale;
             }
             if (Input.GetKey("a") || mouse.x <= MousePixelBorder)
             {
-                cameraPosition.x -= CameraSpeed * Time.deltaTime;
+                cameraPosition.x -= CameraSpeed * Time.deltaTime / Time.timeScale;
             }
             if (Input.GetKey("d") || mouse.x >= Screen.width - MousePixelBorder)
             {
-                cameraPosition.x += CameraSpeed * Time.deltaTime;
+                cameraPosition.x += CameraSpeed * Time.deltaTime / Time.timeScale;
             }
 
             float scroll = Input.GetAxis("Mouse ScrollWheel");

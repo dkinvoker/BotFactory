@@ -13,6 +13,7 @@ namespace Assets.Scripts
     {
         public GameObject MainCanvas;
         public GameObject ProgrammingCanvas;
+        public Text GameSpeedText;
 
         private void Start()
         {
@@ -45,6 +46,12 @@ namespace Assets.Scripts
         {
             SceneManager.LoadScene(name, LoadSceneMode.Single);
             MainCanvas.SetActive(true);
+        }
+
+        public void ChangeGameSpeed(float newSpeedMultiplayer)
+        {
+            Time.timeScale = newSpeedMultiplayer;
+            GameSpeedText.text = newSpeedMultiplayer.ToString("0.00");
         }
     }
 }
