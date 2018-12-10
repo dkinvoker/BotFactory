@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands
 {
-    class AddTurningSpeed : MemoryCommand
+    class Decrement : MemoryCommand
     {
         public override CommandType Type
         {
@@ -22,27 +22,26 @@ namespace Assets.Scripts.Commands
         {
             get
             {
-                return "Adds value of tank turning speed to specyfic memory cell";
+                return "Subtracts 1 from value in specyfic memory cell";
             }
         }
 
         public override CommandError Execute(Tank tank)
         {
             var memoryData = tank.Memory[MemoryIndex];
-
             if (memoryData == null)
             {
-                return new CommandError($"Memory at {MemoryIndex} is empty!");
+                return new CommandError($"Memory at location {MemoryIndex} is empty!");
             }
             else if (!(memoryData is Number))
             {
-                return new CommandError($"Variable at {MemoryIndex} have to be Numerical Type");
+                return new CommandError($"Memory at location {MemoryIndex} is not numeric type!");
             }
             else
             {
-                var casting = memoryData as Number;
-                casting += new Number(tank.Wheels.TurningSpeed);
-                tank.Memory.Variables[MemoryIndex] = casting;
+                var number = memoryData as Number;
+                number -= 1;
+                tank.Memory.Variables[MemoryIndex] = number;
                 return null;
             }
         }

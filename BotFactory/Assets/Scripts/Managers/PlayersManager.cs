@@ -55,6 +55,18 @@ namespace Assets.Scripts
             this.StartCoroutine(ResourceGeneration());
         }
 
+        public static void ClearAllMemories()
+        {
+            foreach (var player in Players)
+            {
+                foreach (var tank in player.Tanks)
+                {
+                    tank.Memory = new Parts.Memory.Memory();
+                    tank.Memory.Variables = new Variables.Variable[3];
+                }
+            }
+        }
+
         private static IEnumerator ResourceGeneration()
         {
             while (true)

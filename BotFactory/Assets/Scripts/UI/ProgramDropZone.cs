@@ -77,7 +77,7 @@ namespace Assets.Scripts.UI
             }
             else if (commandBlock.CommandBlueprint is MemoryJumpCommand)
             {
-                CreateJumpCommandInstanceVariationBlock(MemoryCommandPrefab, out prefabCopy);
+                CreateJumpCommandInstanceVariationBlock(MemoryJumpCommandPrefab, out prefabCopy);
             }
             else if (commandBlock.CommandBlueprint is JumpCommand)
             {
@@ -86,6 +86,18 @@ namespace Assets.Scripts.UI
 
             prefabCopy.transform.SetSiblingIndex(DummySlot.Value);
             prefabCopy.GetComponent<CommandInstanceBlock>().Command = commandBlock.CommandBlueprint.Copy();
+
+            //var preferedComponentHeight = prefabCopy.GetComponent<LayoutElement>().preferredHeight;
+            //var componentheight = prefabCopy.GetComponent<RectTransform>().rect.height;
+
+            ////if (componentheight < preferedComponentHeight)
+            //if (true)
+            //{
+            //    var oldHeight = this.transform.parent.GetComponentInParent<RectTransform>().rect.height;
+            //    var width = prefabCopy.GetComponent<RectTransform>().rect.width;
+            //    this.transform.parent.GetComponentInParent<RectTransform>().sizeDelta = new Vector2(width, oldHeight + preferedComponentHeight);
+            //}
+
 
             DestroyDummy();
         }
@@ -136,9 +148,22 @@ namespace Assets.Scripts.UI
             Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
             prefabCopyRef.GetComponent<Image>().color = jumpColor;
             targetBlockCopy.GetComponent<Image>().color = jumpColor;
+            foreach (var text in prefabCopyRef.GetComponentsInChildren<Text>())
+            {
+                text.color = InvertColor(jumpColor);
+            }
+            foreach (var text in targetBlockCopy.GetComponentsInChildren<Text>())
+            {
+                text.color = InvertColor(jumpColor);
+            }
 
             prefabCopyRef.GetComponent<JumpCommandInstanceBlock>().TargetBlock = targetBlockCopy;
             targetBlockCopy.GetComponent<JumpTarget>().JumpParent = prefabCopyRef;
+        }
+
+        private Color InvertColor(Color color)
+        {
+            return new Color(1.0f - color.r, 1.0f - color.g, 1.0f - color.b);
         }
     }
 }

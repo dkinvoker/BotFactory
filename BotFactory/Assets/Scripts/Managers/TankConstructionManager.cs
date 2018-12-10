@@ -30,7 +30,7 @@ namespace Assets.Scripts
             List<Command> program = new List<Command>();
             program.Add(new ClearMemory());
 
-            PlayersManager.GetPlayerByName("Dummy Player").RegisterProgram(program);
+            PlayersManager.GetPlayerByName("Dummy Player").RegisterNewProgram(program);
 
             Tank.gameObject.SetActive(true);
 

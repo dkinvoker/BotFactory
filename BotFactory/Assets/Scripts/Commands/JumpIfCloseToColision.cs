@@ -21,7 +21,7 @@ namespace Assets.Scripts.Commands
 
         protected override bool DirectConditionCheck(Tank tank)
         {
-            const float maxDistance = 20f;
+            const float maxDistance = 15f;
 
             //---
             Debug.DrawRay(tank.transform.position + new Vector3(0, 0.2f, 0), tank.transform.forward, Color.green, 20, true);

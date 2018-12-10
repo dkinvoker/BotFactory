@@ -92,7 +92,7 @@ namespace Assets.Scripts
         private void RaportError(CommandError error)
         {
             string finalMessage = $"Error occurred at {ProgramController.ProgramCounter} : {error.Message}. Rebooting tank";
-            GameObject.FindObjectOfType<GameManager>().Notify(finalMessage, this.Player);
+            //GameObject.FindObjectOfType<GameManager>().Notify(finalMessage, this.Player);
             Debug.LogError(finalMessage);
         }
         #endregion
@@ -101,25 +101,12 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
-            RegisterReference();          
-            ProgramController = new ProgramController(this.Player, 0);
+            RegisterReference();
+            LoadProgram(0);
             this.AudioSource.clip = Wheels.Audio;
             this.AudioSource.Play();
             HP = Wheels.HP;
             FirePoint = this.GetComponentsInChildren<Transform>()[2].GetComponentsInChildren<Transform>()[1];
-
-            //-----TESTS-----
-            List<Command> testProgram = new List<Command>();
-            testProgram.Add(new ClearMemory());
-            testProgram.Add(new FindNearestEnemyTank() { MemoryIndex = 0 });
-            testProgram.Add(new TurnWeaponToPosition() { MemoryIndex = 0 });
-            testProgram.Add(new JumpIfPositionInRange() { Negate = true, JumpPosition = 0, MemoryIndex = 0 });
-            testProgram.Add(new JumpIfAimingEnemyTank() { Negate = true, JumpPosition = 0 });
-            testProgram.Add(new JumpIfWeaponReady() { Negate = true, JumpPosition = 0 });
-            testProgram.Add(new Fire());
-            PlayersManager.GetPlayerByName("Player2").RegisterProgram(testProgram);
-            //this.ProgramIndex = 1;
-            //-----TESTS-----
         }
 
         // Ta funkcja jest wywoływana co klatkę przy stałej szybkości klatek, jeśli klasa MonoBehaviour jest włączona
@@ -127,7 +114,7 @@ namespace Assets.Scripts
         {
             if (!IsLocked)
             {
-                var packetError = ProgramController.ExecuteCommandPacket(this);
+                var packetError = ProgramController?.ExecuteCommandPacket(this);
                 if (packetError != null)
                 {
                     RaportError(packetError);
@@ -156,6 +143,14 @@ namespace Assets.Scripts
         }
 
         #endregion
+
+        public void LoadProgram(int index)
+        {
+            if (PlayersManager.GetPlayerByName(this.Player).Programs.Count > index)
+            {
+                ProgramController = new ProgramController(this.Player, 0);
+            }
+        }
 
     }
 }
