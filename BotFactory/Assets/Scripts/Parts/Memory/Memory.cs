@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.Parts.Memory
 {
     [CreateAssetMenu(fileName = "Memory", menuName = "Tank Parts/Memory")]
-    public class Memory : ScriptableObject
+    public class Memory : TankPart
     {
         public Variable[] Variables;
 

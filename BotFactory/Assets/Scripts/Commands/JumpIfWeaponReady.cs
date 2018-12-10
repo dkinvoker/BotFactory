@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Commands.Bases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,29 +8,26 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Redirect program flow to specific command number if weapon is ready to fire")]
     class JumpIfWeaponReady : JumpCommand
     {
-        public override CommandError Execute(Tank tank)
+        public override string Description
         {
-            var shouldJump = false;
+            get
+            {
+                return "Redirect program flow to specific command number if weapon is ready to fire";
+            }
+        }
 
+        protected override bool DirectConditionCheck(Tank tank)
+        {
             if (tank.IsReadyToFire)
             {
-                shouldJump = true;
+                return true;
             }
-
-            if (Negate)
+            else
             {
-                shouldJump = !shouldJump;
+                return false;
             }
-
-            if(shouldJump)
-            {
-                new Jump() { JumpPosition = this.JumpPosition }.Execute(tank);
-            }
-            
-            return null;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Commands.Bases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,7 +9,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Turns weapon left")]
     class TurnWeaponLeft : SimpleCommand
     {
         public override CommandType Type
@@ -16,6 +16,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.WeaponRotation;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Turns weapon left";
             }
         }
 

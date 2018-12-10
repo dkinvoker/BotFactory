@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Commands.Bases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Cleares all memory cells")]
     class ClearMemory : SimpleCommand
     {
         public override CommandType Type
@@ -15,6 +15,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.PureMemory;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Cleares all memory cells";
             }
         }
 

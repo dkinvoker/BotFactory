@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Variables;
+﻿using Assets.Scripts.Commands.Bases;
+using Assets.Scripts.Variables;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Commands
 {
-    [Description("Turns the tank left or right dependig on the position stored in memory cell")]
     class TurnToPosition : MemoryCommand
     {
 
@@ -17,6 +17,14 @@ namespace Assets.Scripts.Commands
             get
             {
                 return CommandType.Rotation;
+            }
+        }
+
+        public override string Description
+        {
+            get
+            {
+                return "Turns the tank left or right dependig on the position stored in memory cell";
             }
         }
 
