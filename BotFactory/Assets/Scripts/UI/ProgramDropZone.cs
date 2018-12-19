@@ -62,26 +62,41 @@ namespace Assets.Scripts.UI
             if (commandBlock.CommandBlueprint is SimpleCommand)
             {
                 prefabCopy = GameObject.Instantiate(SimpleCommandPrefab, this.transform);
+                prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<RectTransform>().sizeDelta=commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
             else if (commandBlock.CommandBlueprint is ArgumentMemoryCommand)
             {
                 prefabCopy = GameObject.Instantiate(ArgumentMemoryCommandPrefab, this.transform);
+                prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
             else if (commandBlock.CommandBlueprint is MemoryCommand)
             {
                 prefabCopy = GameObject.Instantiate(MemoryCommandPrefab, this.transform);
+                prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
             else if (commandBlock.CommandBlueprint is ArithmeticalComparison)
             {
                 CreateJumpCommandInstanceVariationBlock(ArithmeticalComparisonCommandPrefab, out prefabCopy);
+                prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
             else if (commandBlock.CommandBlueprint is MemoryJumpCommand)
             {
                 CreateJumpCommandInstanceVariationBlock(MemoryJumpCommandPrefab, out prefabCopy);
+                prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
             else if (commandBlock.CommandBlueprint is JumpCommand)
             {
                 CreateJumpCommandInstanceVariationBlock(JumpCommandPrefab, out prefabCopy);
+                prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
+
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
 
             prefabCopy.transform.SetSiblingIndex(DummySlot.Value);
@@ -145,17 +160,17 @@ namespace Assets.Scripts.UI
             prefabCopyRef = GameObject.Instantiate(prefab, this.transform);
             var targetBlockCopy = GameObject.Instantiate(JumpTargetPrefab, this.transform);
 
-            Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
-            prefabCopyRef.GetComponent<Image>().color = jumpColor;
-            targetBlockCopy.GetComponent<Image>().color = jumpColor;
-            foreach (var text in prefabCopyRef.GetComponentsInChildren<Text>())
-            {
-                text.color = InvertColor(jumpColor);
-            }
-            foreach (var text in targetBlockCopy.GetComponentsInChildren<Text>())
-            {
-                text.color = InvertColor(jumpColor);
-            }
+            //Color jumpColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+            //prefabCopyRef.GetComponent<Image>().color = jumpColor;
+            //targetBlockCopy.GetComponent<Image>().color = jumpColor;
+            //foreach (var text in prefabCopyRef.GetComponentsInChildren<Text>())
+            //{
+            //    text.color = InvertColor(jumpColor);
+            //}
+            //foreach (var text in targetBlockCopy.GetComponentsInChildren<Text>())
+            //{
+            //    text.color = InvertColor(jumpColor);
+            //}
 
             prefabCopyRef.GetComponent<JumpCommandInstanceBlock>().TargetBlock = targetBlockCopy;
             targetBlockCopy.GetComponent<JumpTarget>().JumpParent = prefabCopyRef;
