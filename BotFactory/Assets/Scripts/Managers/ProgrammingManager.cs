@@ -68,7 +68,8 @@ namespace Assets.Scripts
             new JumpIfCloseToColision(),
             new JumpIfFacingEnemyTank(),
             new JumpIfPositionInRange(),
-            new JumpIfWeaponReady()
+            new JumpIfWeaponReady(),
+            new JumpIfNull()
         };
 
         private readonly Command[] _weaponCommands =

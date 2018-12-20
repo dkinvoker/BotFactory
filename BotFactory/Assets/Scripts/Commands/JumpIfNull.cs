@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Commands
 {
-    class JumpIfNull : JumpCommand
+    class JumpIfNull : MemoryJumpCommand
     {
         public override string Description
         {
@@ -19,7 +19,19 @@ namespace Assets.Scripts.Commands
 
         protected override bool DirectConditionCheck(Tank tank)
         {
-            throw new NotImplementedException();
+            if (tank.Memory[this.MemoryIndex] == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        protected override bool IsVariableGoodType(Tank tank)
+        {
+            return true;
         }
     }
 }

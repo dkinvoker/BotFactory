@@ -82,12 +82,18 @@ namespace Assets.Scripts.UI
                 CreateJumpCommandInstanceVariationBlock(ArithmeticalComparisonCommandPrefab, out prefabCopy);
                 prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
                 prefabCopy.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
+
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
             else if (commandBlock.CommandBlueprint is MemoryJumpCommand)
             {
                 CreateJumpCommandInstanceVariationBlock(MemoryJumpCommandPrefab, out prefabCopy);
                 prefabCopy.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
                 prefabCopy.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
+
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock.GetComponent<Image>().color = commandBlock.GetComponent<Image>().color;
+                prefabCopy.GetComponent<JumpCommandInstanceBlock>().TargetBlock.GetComponent<RectTransform>().sizeDelta = commandBlock.GetComponent<RectTransform>().sizeDelta;
             }
             else if (commandBlock.CommandBlueprint is JumpCommand)
             {
