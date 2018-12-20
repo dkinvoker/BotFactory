@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cost: 20
   ConstructionTime: 10
-  Damage: 75
+  Damage: 115
   ReloadTime: 3
-  BulletSpeed: 55
-  Range: 125
+  BulletSpeed: 65
+  Range: 225
   Bullet: {fileID: 1412142431961536, guid: 71b4f99e8b82f1b4f994f0170e829f20, type: 2}
   Model: {fileID: 1400687682047460, guid: 5edc4f35eccc0694690b3586252c54a2, type: 2}
   ModelAnchor: {x: 0, y: 2.64, z: -0.94}
