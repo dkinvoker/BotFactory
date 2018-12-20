@@ -15,6 +15,8 @@ namespace Assets.Scripts
         public GameObject ProgrammingCanvas;
         public Text GameSpeedText;
 
+        public AudioSource GearAudioSource;
+
         private void Start()
         {
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Undescructable"));
@@ -60,6 +62,11 @@ namespace Assets.Scripts
         private void ClearAllPlayer1Programs()
         {
             PlayersManager.GetPlayerByName("Player1").Programs.Clear();
+        }
+
+        public void PlayGearSound()
+        {
+            GearAudioSource.Play();
         }
     }
 }

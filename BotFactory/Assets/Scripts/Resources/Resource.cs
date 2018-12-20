@@ -10,7 +10,6 @@ namespace Assets.Scripts.Resources
     class Resource : MonoBehaviour
     {
         public int ResourcesCount = 50;
-        public AudioClip Audio;
 
         private Vector3 _rotVector = new Vector3(16f, 32f, 48f); 
 
@@ -28,6 +27,12 @@ namespace Assets.Scripts.Resources
 
             Destroy(this.gameObject);
         }
+
+        private void OnDestroy()
+        {
+            GameObject.FindObjectOfType<GameManager>().PlayGearSound();
+        }
+
 
     }
 }

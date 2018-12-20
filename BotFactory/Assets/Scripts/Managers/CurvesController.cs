@@ -106,4 +106,13 @@ public class CurvesController : MonoBehaviour {
         }
     }
 
+    private void OnDestroy()
+    {
+        foreach (Image image in images)
+        {
+            Destroy(image.gameObject);
+        }
+        images.Clear();
+    }
+
 }
