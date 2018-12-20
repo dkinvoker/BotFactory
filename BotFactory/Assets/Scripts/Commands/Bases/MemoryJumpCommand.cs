@@ -10,7 +10,7 @@ namespace Assets.Scripts.Commands.Bases
     {
         public int MemoryIndex { get; set; } = 0;
 
-        public sealed override CommandError Execute(Tank tank)
+        public override CommandError Execute(Tank tank)
         {
             if (tank.Memory[MemoryIndex] == null)
             {

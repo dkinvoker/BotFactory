@@ -17,6 +17,15 @@ namespace Assets.Scripts.Commands
             }
         }
 
+        public override CommandError Execute(Tank tank)
+        {
+            if (CheckCondition(tank))
+            {
+                tank.ProgramController.ProgramCounter = this.JumpPosition - 1;
+            }
+            return null;
+        }
+
         protected override bool DirectConditionCheck(Tank tank)
         {
             if (tank.Memory[this.MemoryIndex] == null)
