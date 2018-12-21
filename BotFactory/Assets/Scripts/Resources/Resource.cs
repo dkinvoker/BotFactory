@@ -41,7 +41,10 @@ namespace Assets.Scripts.Resources
                 if (lvlManager.ResourcesRequied == 0 && lvlManager.TimeToDestroy == false)
                 {
                     var undescructable = GameObject.FindGameObjectWithTag("Undescructable");
-                    SceneManager.MoveGameObjectToScene(undescructable, SceneManager.GetActiveScene());
+                    if (undescructable != null)
+                    {
+                        SceneManager.MoveGameObjectToScene(undescructable, SceneManager.GetActiveScene());
+                    }
                     SceneManager.LoadScene("Menu");
                 }
             }
