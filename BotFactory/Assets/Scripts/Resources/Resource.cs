@@ -40,6 +40,8 @@ namespace Assets.Scripts.Resources
                 lvlManager.ResourcesRequied--;
                 if (lvlManager.ResourcesRequied == 0 && lvlManager.TimeToDestroy == false)
                 {
+                    var undescructable = GameObject.FindGameObjectWithTag("Undescructable");
+                    SceneManager.MoveGameObjectToScene(undescructable, SceneManager.GetActiveScene());
                     SceneManager.LoadScene("Menu");
                 }
             }
