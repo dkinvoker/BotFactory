@@ -22,7 +22,10 @@ namespace Assets.Scripts
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Undescructable"));
 
             //Hija, maj dija
-
+            foreach (var audioSource in this.GetComponents<AudioSource>())
+            {
+                audioSource.playOnAwake = false;
+            } 
         }
 
         //public Text NotifyTextBox;
