@@ -30,7 +30,7 @@ namespace Assets.Scripts.Resources
 
         private void OnDestroy()
         {
-            GameObject.FindObjectOfType<GameManager>().PlayGearSound();
+            GameObject.FindObjectOfType<GameManager>()?.PlayGearSound();
         }
 
 
