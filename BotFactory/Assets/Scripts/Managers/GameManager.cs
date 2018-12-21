@@ -20,6 +20,9 @@ namespace Assets.Scripts
         private void Start()
         {
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Undescructable"));
+
+            //Hija, maj dija
+
         }
 
         //public Text NotifyTextBox;

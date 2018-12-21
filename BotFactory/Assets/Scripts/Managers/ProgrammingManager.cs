@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Commands;
 using Assets.Scripts.Commands.Bases;
 using Assets.Scripts.Commands.Unique;
+using Assets.Scripts.Managers;
 using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
@@ -181,6 +182,12 @@ namespace Assets.Scripts
 
         private void ReloadScene()
         {
+            var lvlManager = GameObject.FindObjectOfType<LvlManager>();
+            if (lvlManager != null)
+            {
+                lvlManager.TimeToDestroy = true;
+            }
+
             PlayersManager.ClearAllMemories();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
