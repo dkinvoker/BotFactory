@@ -92,7 +92,7 @@ namespace Assets.Scripts
         private void RaportError(CommandError error)
         {
             string finalMessage = $"Error occurred at {ProgramController.ProgramCounter} : {error.Message}. Rebooting tank";
-            //GameObject.FindObjectOfType<GameManager>().Notify(finalMessage, this.Player);
+            GameObject.FindObjectOfType<GameManager>().Notify(finalMessage, this.Player);
             Debug.LogError(finalMessage);
         }
         #endregion

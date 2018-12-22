@@ -22,15 +22,15 @@ namespace Assets.Scripts
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Undescructable"));
         }
 
-        //public Text NotifyTextBox;
+        public Text NotifyTextBox;
 
-        //public void Notify(string message, string playerName)
-        //{
-        //    if (playerName == MainPlayerName)
-        //    {
-        //        NotifyTextBox.text += message + "\n";
-        //    } 
-        //}
+        public void Notify(string message, string playerName)
+        {
+            if (playerName == "Player1")
+            {
+                NotifyTextBox.text = message + "\n";
+            }
+        }
 
         public void OpenProgramEditor()
         {
