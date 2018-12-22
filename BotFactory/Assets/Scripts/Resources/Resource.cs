@@ -27,30 +27,19 @@ namespace Assets.Scripts.Resources
 
             PlayersManager.GetPlayerByName(playerName).Resources += this.ResourcesCount;
 
-            Destroy(this.gameObject);
-        }
-
-        private void OnDestroy()
-        {
+            #region LvlManagement
             GameObject.FindObjectOfType<GameManager>()?.PlayGearSound();
             var lvlManager = GameObject.FindObjectOfType<LvlManager>();
 
             if (lvlManager != null)
             {
                 lvlManager.ResourcesRequied--;
-                if (lvlManager.ResourcesRequied == 0 && lvlManager.TimeToDestroy == false)
-                {
-                    var undescructable = GameObject.FindGameObjectWithTag("Undescructable");
-                    if (undescructable != null)
-                    {
-                        SceneManager.MoveGameObjectToScene(undescructable, SceneManager.GetActiveScene());
-                    }
-                    SceneManager.LoadScene("Menu");
-                }
             }
+            #endregion
 
+
+            Destroy(this.gameObject);
         }
-
 
     }
 }
