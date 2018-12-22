@@ -10,7 +10,7 @@ public class CurvesController : MonoBehaviour {
     private Transform point0, point1;
     private float pointShift;
     private GameObject parentPanel;
-    public int numPoints=20;
+    public int numPoints = 20;
 
     private List<Vector3> positions = new List<Vector3>();
     private List<Image> images = new List<Image>();
@@ -27,8 +27,10 @@ public class CurvesController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (point0!=null && point1!=null)
+        if (point0 != null && point1 != null)
         {
+            var distance = Mathf.Abs(point0.position.y - point1.position.y);
+            numPoints = (int)(distance * 0.15);
             CreatePoints();
             DrawLinearCurve();
         }
