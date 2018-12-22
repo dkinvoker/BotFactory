@@ -182,12 +182,6 @@ namespace Assets.Scripts
 
         private void ReloadScene()
         {
-            var lvlManager = GameObject.FindObjectOfType<LvlManager>();
-            if (lvlManager != null)
-            {
-                lvlManager.TimeToDestroy = true;
-            }
-
             PlayersManager.ClearAllMemories();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
