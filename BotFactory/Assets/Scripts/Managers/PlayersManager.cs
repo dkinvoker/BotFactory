@@ -24,7 +24,7 @@ namespace Assets.Scripts
         {
             get
             {
-                return Players.Single( u => u.PlayerName == name);
+                return Players.Single(u => u.PlayerName == name);
             }
         }
 
