@@ -14,6 +14,7 @@ namespace Assets.Scripts
         public GameObject MainCanvas;
         public GameObject ProgrammingCanvas;
         public Text GameSpeedText;
+        public Text NotifyTextBox;
 
         public AudioSource GearAudioSource;
 
@@ -22,7 +23,13 @@ namespace Assets.Scripts
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Undescructable"));
         }
 
-        public Text NotifyTextBox;
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+        }
 
         public void Notify(string message, string playerName)
         {
