@@ -27,7 +27,7 @@ namespace Assets.Scripts.Commands
             var reycastedObjects = Physics.RaycastAll(tank.transform.position + new Vector3(0, 0.2f, 0), directionalVector);
             if (reycastedObjects.Length > 0)
             {
-                var firstHitObject = reycastedObjects[0];
+                var firstHitObject = reycastedObjects.Last();
                 var scriptComponent = firstHitObject.transform.gameObject.GetComponent<Tank>();
                 if (scriptComponent != null)
                 {

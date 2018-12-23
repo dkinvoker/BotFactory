@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Commands;
 using Assets.Scripts.Commands.Bases;
 using Assets.Scripts.Commands.Unique;
+using Assets.Scripts.Managers;
 using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
@@ -9,51 +10,127 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
     class ProgrammingManager : MonoBehaviour
     {
         public GameObject CommandPrefab;
-        public GameObject CommandsPanel;
-        private readonly Command[] _allCommands =
+        //public GameObject CommandsPanel;
+        public GameObject MovementCommandsPanel;
+        public GameObject JumpCommandsPanel;
+        public GameObject WeaponCommandsPanel;
+        public GameObject MemoryCommandsPanel;
+
+        //private readonly Command[] _allCommands =
+        //{
+        //    new AccelerateForward(),
+        //    new AddTurningSpeed(),
+        //    new ArithmeticalComparison(),
+        //    new Break(),
+        //    new ClearMemory(),
+        //    new Decrement(),
+        //    new DeleteMemoryAt(),
+        //    new FindNearestEnemyTank(),
+        //    new FindNearestResource(),
+        //    new Fire(),
+        //    new Increment(),
+        //    new Jump(),
+        //    new JumpIfAimingEnemyTank(),
+        //    new JumpIfCloseToColision(),
+        //    new JumpIfFacingEnemyTank(),
+        //    new JumpIfPositionInRange(),
+        //    new JumpIfWeaponReady(),
+        //    new Store0(),
+        //    new StoreValue(),
+        //    new TurnLeft(),
+        //    new TurnRight(),
+        //    new TurnToPosition(),
+        //    new TurnWeaponLeft(),
+        //    new TurnWeaponRight(),
+        //    new TurnWeaponToPosition()
+        //};
+
+        private readonly Command[] _movementCommands =
         {
             new AccelerateForward(),
-            new AddTurningSpeed(),
-            new ArithmeticalComparison(),
             new Break(),
-            new ClearMemory(),
-            new Decrement(),
-            new DeleteMemoryAt(),
-            new FindNearestEnemyTank(),
-            new FindNearestResource(),
-            new Fire(),
-            new Increment(),
+            new TurnLeft(),
+            new TurnRight(),
+            new TurnToPosition()
+        };
+
+        private readonly Command[] _jumpCommands =
+        {
+            new ArithmeticalComparison(),
             new Jump(),
             new JumpIfAimingEnemyTank(),
             new JumpIfCloseToColision(),
             new JumpIfFacingEnemyTank(),
             new JumpIfPositionInRange(),
             new JumpIfWeaponReady(),
-            new Store0(),
-            new StoreValue(),
-            new TurnLeft(),
-            new TurnRight(),
-            new TurnToPosition(),
+            new JumpIfNull()
+        };
+
+        private readonly Command[] _weaponCommands =
+        {
+            new Fire(),
             new TurnWeaponLeft(),
             new TurnWeaponRight(),
             new TurnWeaponToPosition()
+        };
+
+        private readonly Command[] _memoryCommands =
+        {
+            new AddTurningSpeed(),
+            new ClearMemory(),
+            new Decrement(),
+            new DeleteMemoryAt(),
+            new FindNearestEnemyTank(),
+            new FindNearestResource(),
+            new Increment(),
+            new Store0(),
+            new StoreValue()
         };
 
         public int MemorySize { get; set; } = 3;
 
         private void Start()
         {
-            foreach (var command in _allCommands)
+            //foreach (var command in _allCommands)
+            //{
+            //    var newCommandBlock = GameObject.Instantiate(CommandPrefab, CommandsPanel.transform);
+            //    newCommandBlock.GetComponent<CommandBlock>().CommandBlueprint = command;
+            //}
+
+            foreach (var command in _movementCommands)
             {
-                var newCommandBlock = GameObject.Instantiate(CommandPrefab, CommandsPanel.transform);
+                var newCommandBlock = GameObject.Instantiate(CommandPrefab, MovementCommandsPanel.transform);
                 newCommandBlock.GetComponent<CommandBlock>().CommandBlueprint = command;
-            }   
+                newCommandBlock.GetComponent<Image>().color = MovementCommandsPanel.transform.parent.GetComponent<Image>().color;
+            }
+
+            foreach (var command in _jumpCommands)
+            {
+                var newCommandBlock = GameObject.Instantiate(CommandPrefab, JumpCommandsPanel.transform);
+                newCommandBlock.GetComponent<CommandBlock>().CommandBlueprint = command;
+                newCommandBlock.GetComponent<Image>().color = JumpCommandsPanel.transform.parent.GetComponent<Image>().color;
+            }
+
+            foreach (var command in _weaponCommands)
+            {
+                var newCommandBlock = GameObject.Instantiate(CommandPrefab, WeaponCommandsPanel.transform);
+                newCommandBlock.GetComponent<CommandBlock>().CommandBlueprint = command;
+                newCommandBlock.GetComponent<Image>().color = WeaponCommandsPanel.transform.parent.GetComponent<Image>().color;
+            }
+
+            foreach (var command in _memoryCommands)
+            {
+                var newCommandBlock = GameObject.Instantiate(CommandPrefab, MemoryCommandsPanel.transform);
+                newCommandBlock.GetComponent<CommandBlock>().CommandBlueprint = command;
+                newCommandBlock.GetComponent<Image>().color = MemoryCommandsPanel.transform.parent.GetComponent<Image>().color;
+            }
         }
 
         public void Confirm()

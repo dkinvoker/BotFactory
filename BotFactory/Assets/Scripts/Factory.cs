@@ -19,7 +19,7 @@ namespace Assets.Scripts
         {
             if (IsLocked)
             {
-                //GameObject.FindObjectOfType<GameManager>().Notify("Factory Is occupied!", this.Player);
+                GameObject.FindObjectOfType<GameManager>().Notify("Factory Is occupied!", this.Player);
             }
             else
             {
@@ -32,7 +32,7 @@ namespace Assets.Scripts
 
                 if (player.Resources < cost)
                 {
-                    //GameObject.FindObjectOfType<GameManager>().Notify("No enough minerals!", this.Player);
+                    GameObject.FindObjectOfType<GameManager>().Notify("No enough minerals!", this.Player);
                     return;
                 }
                 else
@@ -49,7 +49,7 @@ namespace Assets.Scripts
             this.IsLocked = true;
             yield return new WaitForSeconds(time);
             this.IsLocked = false;
-            //GameObject.FindObjectOfType<GameManager>().Notify("Tank Constructed!", this.Player);
+            GameObject.FindObjectOfType<GameManager>().Notify("Tank Constructed!", this.Player);
             SpawnTank(blueprint.gameObject);
         }
 

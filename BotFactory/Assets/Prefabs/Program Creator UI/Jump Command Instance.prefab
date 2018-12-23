@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114007759840607854}
   - component: {fileID: 114832285161124984}
   - component: {fileID: 114352996638248248}
+  - component: {fileID: 114499554002407410}
   m_Layer: 5
   m_Name: Jump Command Instance
   m_TagString: Untagged
@@ -266,6 +267,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Negate
+--- !u!114 &114499554002407410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327370198848574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea306bf560e59ed4c93db1e1e8614c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numPoints: 20
 --- !u!114 &114738917923217930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -469,7 +482,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 295.5, y: 0}
+  m_SizeDelta: {x: 200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224857934259316446
 RectTransform:

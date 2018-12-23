@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 225684311374117920}
   - component: {fileID: 114699513535465312}
   - component: {fileID: 114433900969901398}
+  - component: {fileID: 114954564484487418}
   m_Layer: 5
   m_Name: Arithmetical Comparison Command Instance
   m_TagString: Untagged
@@ -2333,6 +2334,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114954564484487418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1451678325925010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea306bf560e59ed4c93db1e1e8614c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numPoints: 20
 --- !u!114 &114958702833004218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3390,10 +3403,10 @@ RectTransform:
   m_Father: {fileID: 224997481081723340}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 307.3, y: -5}
-  m_SizeDelta: {x: 68.67, y: 12}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 11.799988, y: -5}
+  m_SizeDelta: {x: 68.66998, y: 12}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &224831258012113198
 RectTransform:

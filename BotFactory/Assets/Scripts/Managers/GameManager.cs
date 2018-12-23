@@ -14,21 +14,30 @@ namespace Assets.Scripts
         public GameObject MainCanvas;
         public GameObject ProgrammingCanvas;
         public Text GameSpeedText;
+        public Text NotifyTextBox;
+
+        public AudioSource GearAudioSource;
 
         private void Start()
         {
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("Undescructable"));
         }
 
-        //public Text NotifyTextBox;
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+        }
 
-        //public void Notify(string message, string playerName)
-        //{
-        //    if (playerName == MainPlayerName)
-        //    {
-        //        NotifyTextBox.text += message + "\n";
-        //    } 
-        //}
+        public void Notify(string message, string playerName)
+        {
+            if (playerName == "Player1")
+            {
+                NotifyTextBox.text = message + "\n";
+            }
+        }
 
         public void OpenProgramEditor()
         {
@@ -60,6 +69,11 @@ namespace Assets.Scripts
         private void ClearAllPlayer1Programs()
         {
             PlayersManager.GetPlayerByName("Player1").Programs.Clear();
+        }
+
+        public void PlayGearSound()
+        {
+            GearAudioSource.Play();
         }
     }
 }

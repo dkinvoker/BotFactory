@@ -110,6 +110,13 @@ ModelImporter:
     100208: przecinakLufa
     100210: //RootNode
     100212: Top
+    100214: Bot2
+    100216: Lufa2
+    100218: propeller
+    100220: propeller_001
+    100222: propeller_002
+    100224: propeller_003
+    100226: Top2
     400000: Bone
     400002: Bone_0
     400004: Bone_1
@@ -217,6 +224,13 @@ ModelImporter:
     400208: przecinakLufa
     400210: //RootNode
     400212: Top
+    400214: Bot2
+    400216: Lufa2
+    400218: propeller
+    400220: propeller_001
+    400222: propeller_002
+    400224: propeller_003
+    400226: Top2
     2100000: unnamed
     2100002: Material
     2100004: Material_030
@@ -248,6 +262,35 @@ ModelImporter:
     2100056: Material_005
     2100058: Material_002
     2100060: Material_006
+    2100062: Material_046
+    2100064: Material_047
+    2100066: Material_003
+    2100068: Material_001
+    2100070: Material_072
+    2100072: Material_048
+    2100074: Material_051
+    2100076: Material_053
+    2100078: Material_049
+    2100080: Material_050
+    2100082: Material_052
+    2100084: Material_059
+    2100086: Material_057
+    2100088: Material_055
+    2100090: Material_058
+    2100092: Material_056
+    2100094: Material_054
+    2100096: Material_065
+    2100098: Material_063
+    2100100: Material_061
+    2100102: Material_064
+    2100104: Material_062
+    2100106: Material_060
+    2100108: Material_071
+    2100110: Material_069
+    2100112: Material_067
+    2100114: Material_070
+    2100116: Material_068
+    2100118: Material_066
     2300000: Bot
     2300002: kolo
     2300004: kolo_001
@@ -267,6 +310,13 @@ ModelImporter:
     2300032: przecinakGosienicowy_001
     2300034: przecinakLufa
     2300036: Top
+    2300038: Bot2
+    2300040: Lufa2
+    2300042: propeller
+    2300044: propeller_001
+    2300046: propeller_002
+    2300048: propeller_003
+    2300050: Top2
     3300000: Bot
     3300002: kolo
     3300004: kolo_001
@@ -286,6 +336,13 @@ ModelImporter:
     3300032: przecinakGosienicowy_001
     3300034: przecinakLufa
     3300036: Top
+    3300038: Bot2
+    3300040: Lufa2
+    3300042: propeller
+    3300044: propeller_001
+    3300046: propeller_002
+    3300048: propeller_003
+    3300050: Top2
     4300000: Top
     4300002: przecinak
     4300004: kolo
@@ -334,6 +391,13 @@ ModelImporter:
     4300090: gasienica_002
     4300092: przecinakLufa
     4300094: lufa
+    4300096: Bot2
+    4300098: Lufa2
+    4300100: Top2
+    4300102: propeller
+    4300104: propeller_001
+    4300106: propeller_002
+    4300108: propeller_003
     7400000: Default Take
     9500000: //RootNode
     13700000: gasienica
